@@ -58,11 +58,9 @@ namespace ConsoleApp1 {
             }
             set => recipient = value;
         }
-
         public object Clone() {
-            throw new NotImplementedException();
+            return (Transaction)MemberwiseClone();
         }
-
         public void SaveToJSON() {
             StringBuilder sb = new("transaction");
             sb.Append(this.TransactionID);

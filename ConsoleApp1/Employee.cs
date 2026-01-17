@@ -25,15 +25,12 @@ namespace ConsoleApp1 {
         public void AddAccount(Account account) {
             Accounts.Add(account);
         }
-
         public void Approve(Transaction transaction) {
             transaction.Sender.RemoveRestricion();
         }
-
         public void Notify(Transaction transaction) {
             SusTransactions.Add(transaction);
         }
-
         public override bool Equals(Person? other) {
             if (other == null)
                 return false;

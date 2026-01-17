@@ -41,13 +41,10 @@ namespace ConsoleApp1 {
             }
         }
         public DateTime DateOfBirth { get => dateOfBirth; set => dateOfBirth = value; }
-
         public virtual void DisplayPersonalInfo() {
 
         }
-
         public abstract void SaveToJSON();
-
         public abstract bool Equals(Person? other);
     }
 }

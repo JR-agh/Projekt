@@ -96,7 +96,6 @@ namespace ConsoleApp1 {
             else
                 Balance += transaction.Amount;
         }
-
         public int CompareTo(object? obj) {
             if (obj == null) return 1;
             if (obj is Account other) {
@@ -110,7 +109,6 @@ namespace ConsoleApp1 {
             else
                 return 1;
         }
-
         public bool Equals(Account? other) {
             if(other == null) return false;
             if(other.AccountNumber == this.AccountNumber)
@@ -118,11 +116,9 @@ namespace ConsoleApp1 {
             else
                 return false;
         }
-
         public int Compare(Account? x, Account? y) {
             throw new NotImplementedException();
         }
-
         public void SaveToJSON() {
             StringBuilder sb = new("account");
             sb.Append(this.AccountNumber);
