@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace ConsoleApp1 {
@@ -11,7 +12,7 @@ namespace ConsoleApp1 {
         Withdrawal
     }
     internal class Transaction : ICloneable {
-        static int transactionID;
+        int transactionID;
         decimal amount;
         Account? sender;
         Account? recipient;
@@ -27,6 +28,7 @@ namespace ConsoleApp1 {
             else {
                 this.Sender = account1;
             }
+            transactionID = 0;
         }
         Transaction(decimal amount, TransactionType type, Account account1, Account account2) {
             if (type != TransactionType.Transfer) {
@@ -37,14 +39,37 @@ namespace ConsoleApp1 {
             Recipient = account2;
         }
 
-        public static int TransactionID { get => transactionID; set => transactionID = value; }
+        public int TransactionID { get => transactionID; set => transactionID = value; }
         public decimal Amount { get => amount; set => amount = value; }
-        internal TransactionType Type { get => type; set => type = value; }
-        internal Account Sender { get => sender; set => sender = value; }
-        internal Account Recipient { get => recipient; set => recipient = value; }
+        public TransactionType Type { get => type; set => type = value; }
+        internal Account Sender {
+            get {
+                if(sender == null)
+                    throw new InvalidOperationException();
+                return sender;
+            }
+            set => sender = value;
+        }
+        internal Account Recipient {
+            get {
+                if (recipient == null)
+                    throw new InvalidOperationException();
+                return recipient;
+            }
+            set => recipient = value;
+        }
 
         public object Clone() {
             throw new NotImplementedException();
+        }
+
+        public void SaveToJSON() {
+            StringBuilder sb = new("transaction");
+            sb.Append(this.TransactionID);
+            sb.Append(".json");
+            string fileName = sb.ToString();
+            string jsonString = JsonSerializer.Serialize(this);
+            File.WriteAllText(fileName, jsonString);
         }
     }
 }

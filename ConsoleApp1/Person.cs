@@ -46,6 +46,8 @@ namespace ConsoleApp1 {
 
         }
 
+        public abstract void SaveToJSON();
+
         public abstract bool Equals(Person? other);
     }
 }

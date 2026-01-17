@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace ConsoleApp1 {
@@ -15,10 +16,14 @@ namespace ConsoleApp1 {
         internal List<Account> Accounts { get => accounts; set => accounts = value; }
         internal List<Transaction> SusTransactions { get => susTransactions; set => susTransactions = value; }
 
-        Employee(string firstName, string lastName, string pesel, string telNumber, DateTime dateOfBirth) :
+        public Employee(string firstName, string lastName, string pesel, string telNumber, DateTime dateOfBirth) :
             base(firstName, lastName, pesel, telNumber, dateOfBirth) {
             Accounts = [];
             SusTransactions = [];
+        }
+
+        public void AddAccount(Account account) {
+            Accounts.Add(account);
         }
 
         public void Approve(Transaction transaction) {
@@ -35,6 +40,14 @@ namespace ConsoleApp1 {
             if (this.Pesel == other.Pesel)
                 return true;
             return false;
+        }
+        public override void SaveToJSON() {
+            StringBuilder sb = new("employee");
+            sb.Append(this.Pesel);
+            sb.Append(".json");
+            string fileName = sb.ToString();
+            string jsonString = JsonSerializer.Serialize(this);
+            File.WriteAllText(fileName, jsonString);
         }
     }
 }

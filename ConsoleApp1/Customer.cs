@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace ConsoleApp1 {
@@ -25,6 +26,15 @@ namespace ConsoleApp1 {
             if(this.Pesel == other.Pesel)
                 return true;
             return false;
+        }
+
+        public override void SaveToJSON() {
+            StringBuilder sb = new("customer");
+            sb.Append(this.Pesel);
+            sb.Append(".json");
+            string fileName = sb.ToString();
+            string jsonString = JsonSerializer.Serialize(this);
+            File.WriteAllText(fileName, jsonString);
         }
     }
 }
