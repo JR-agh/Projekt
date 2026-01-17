@@ -11,7 +11,7 @@ namespace ConsoleApp1 {
         Deposit,
         Withdrawal
     }
-    internal class Transaction : ICloneable {
+    internal class Transaction : ICloneable, IJSONSaveLoad {
         int transactionID;
         decimal amount;
         Account? sender;
@@ -38,7 +38,6 @@ namespace ConsoleApp1 {
             Sender = account1;
             Recipient = account2;
         }
-
         public int TransactionID { get => transactionID; set => transactionID = value; }
         public decimal Amount { get => amount; set => amount = value; }
         public TransactionType Type { get => type; set => type = value; }
@@ -60,6 +59,9 @@ namespace ConsoleApp1 {
         }
         public object Clone() {
             return (Transaction)MemberwiseClone();
+        }
+        public void LoadToJSON() {
+            throw new NotImplementedException();
         }
         public void SaveToJSON() {
             StringBuilder sb = new("transaction");

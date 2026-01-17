@@ -7,7 +7,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace ConsoleApp1 {
-    internal class Employee : Person {
+    internal class Employee : Person, IJSONSaveLoad {
         int employeeID;
         List<Account> accounts;
         List<Transaction> susTransactions;
@@ -38,7 +38,10 @@ namespace ConsoleApp1 {
                 return true;
             return false;
         }
-        public override void SaveToJSON() {
+        public void LoadToJSON() {
+            throw new NotImplementedException();
+        }
+        public void SaveToJSON() {
             StringBuilder sb = new("employee");
             sb.Append(this.Pesel);
             sb.Append(".json");

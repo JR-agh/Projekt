@@ -20,7 +20,6 @@ namespace ConsoleApp1 {
             TelNumber = telNumber;
             DateOfBirth = dateOfBirth;
         }
-
         public string FirstName {get => firstName; set => firstName = value; }
         public string LastName { get => lastName; set => lastName = value; }
         public string Pesel { get => pesel;
@@ -42,9 +41,8 @@ namespace ConsoleApp1 {
         }
         public DateTime DateOfBirth { get => dateOfBirth; set => dateOfBirth = value; }
         public virtual void DisplayPersonalInfo() {
-
+            Console.WriteLine($"{FirstName}, {LastName}, {Pesel}");
         }
-        public abstract void SaveToJSON();
         public abstract bool Equals(Person? other);
     }
 }

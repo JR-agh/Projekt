@@ -10,6 +10,7 @@ internal class Program {
         Console.WriteLine(c1.FirstName);
         Account acc1 = new(c1);
         Employee e1 = new("Juliette", "Swan", "02345678901", "234-234-234", d1);
+        Console.WriteLine(acc1.Advisor); //null
         acc1.AddAdvisor(e1);
         Console.WriteLine(acc1.Advisor.Accounts[0].Balance);
     }

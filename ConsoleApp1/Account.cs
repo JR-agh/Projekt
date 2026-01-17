@@ -119,6 +119,9 @@ namespace ConsoleApp1 {
         public int Compare(Account? x, Account? y) {
             throw new NotImplementedException();
         }
+        public void LoadToJSON() {
+            throw new NotImplementedException();
+        }
         public void SaveToJSON() {
             StringBuilder sb = new("account");
             sb.Append(this.AccountNumber);

@@ -6,20 +6,17 @@ using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace ConsoleApp1 {
-    internal class Customer : Person {
+    internal class Customer : Person, IJSONSaveLoad {
         Account? personalAccount;
 
         Account? PersonalAccount { get => personalAccount; set => personalAccount = value; }
-
         public Customer(string firstName, string lastName, string pesel, string telNumber, DateTime dateOfBirth) :
             base(firstName, lastName, pesel, telNumber, dateOfBirth) {
 
         }
-
         void AssignAccount(Account account) {
             PersonalAccount = account;
         }
-
         public override bool Equals(Person? other) {
             if (other == null)
                 return false;
@@ -27,8 +24,10 @@ namespace ConsoleApp1 {
                 return true;
             return false;
         }
-
-        public override void SaveToJSON() {
+        public void LoadToJSON() {
+            throw new NotImplementedException();
+        }
+        public void SaveToJSON() {
             StringBuilder sb = new("customer");
             sb.Append(this.Pesel);
             sb.Append(".json");
