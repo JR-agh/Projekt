@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1 {
     internal abstract class Person : IEquatable<Person> {
-        required internal  string firstName;
-        required internal string lastName;
-        required internal string pesel;
-        required internal string telNumber;
-        required internal DateTime dateOfBirth;
+        string firstName;
+        string lastName;
+        string pesel;
+        string telNumber;
+        DateTime dateOfBirth;
 
-        protected Person(String firstName, String lastName, String pesel, String telNumber, DateTime dateOfBirth) {
+        protected Person(string firstName, string lastName, string pesel, string telNumber, DateTime dateOfBirth) {
             FirstName = firstName;
             LastName = lastName;
             Pesel = pesel;
@@ -33,7 +33,13 @@ namespace ConsoleApp1 {
                     throw new ArgumentException("Podany pesel jest bledny.");
             }
         }
-        public string TelNumber { get => telNumber; set => telNumber = value; }
+        public string TelNumber {
+            get => telNumber;
+            set {
+                if(telNumber != null)//zrób to sprawdzanie czy dobry input jest, a jak nie to wyjątek
+                    telNumber = value;
+            }
+        }
         public DateTime DateOfBirth { get => dateOfBirth; set => dateOfBirth = value; }
 
         public virtual void DisplayPersonalInfo() {

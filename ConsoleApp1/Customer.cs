@@ -8,9 +8,9 @@ namespace ConsoleApp1 {
     internal class Customer : Person {
         Account? personalAccount;
 
-        internal Account? PersonalAccount { get => personalAccount; set => personalAccount = value; }
+        Account? PersonalAccount { get => personalAccount; set => personalAccount = value; }
 
-        Customer(String firstName, String lastName, String pesel, String telNumber, DateTime dateOfBirth) :
+        public Customer(string firstName, string lastName, string pesel, string telNumber, DateTime dateOfBirth) :
             base(firstName, lastName, pesel, telNumber, dateOfBirth) {
 
         }

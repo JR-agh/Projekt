@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 namespace ConsoleApp1 {
     internal class Employee : Person {
         int employeeID;
-        required internal List<Account> accounts;
-        required internal List<Transaction> susTransactions;
+        List<Account> accounts;
+        List<Transaction> susTransactions;
 
         public int EmployeeID { get => employeeID; set => employeeID = value; }
         internal List<Account> Accounts { get => accounts; set => accounts = value; }
         internal List<Transaction> SusTransactions { get => susTransactions; set => susTransactions = value; }
 
-        Employee(String firstName, String lastName, String pesel, String telNumber, DateTime dateOfBirth) :
+        Employee(string firstName, string lastName, string pesel, string telNumber, DateTime dateOfBirth) :
             base(firstName, lastName, pesel, telNumber, dateOfBirth) {
             Accounts = [];
             SusTransactions = [];

@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1 {
     internal class Account : IComparable, IEquatable<Account>, IComparer<Account> {
-        required internal decimal balance;
-        required internal Customer owner;
-        required internal Employee advisor;
-        required internal bool isRestricted;
-        required internal string accountNumber;
-        required internal List<Transaction> transactions;
+        decimal balance;
+        Customer owner;
+        Employee advisor;
+        bool isRestricted;
+        string accountNumber;
+        List<Transaction> transactions;
         Transaction? transactionOnHold;
         Account(Customer owner, Employee advisor) {
             IsRestricted = false;
