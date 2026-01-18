@@ -6,7 +6,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace ConsoleApp1 {
-    internal class Customer : Person, IJSONSaveLoad {
+    public class Customer : Person, IJSONSaveLoad {
         Account? personalAccount;
 
         Account? PersonalAccount { get => personalAccount; set => personalAccount = value; }

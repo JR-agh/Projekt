@@ -7,7 +7,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace ConsoleApp1 {
-    internal class Employee : Person, IJSONSaveLoad {
+    public class Employee : Person, IJSONSaveLoad {
         int employeeID;
         List<Account> accounts;
         List<Transaction> susTransactions;

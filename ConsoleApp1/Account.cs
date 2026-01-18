@@ -8,7 +8,7 @@ using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace ConsoleApp1 {
-    internal class Account : IComparable, IEquatable<Account>, IComparer<Account> {
+    public class Account : IComparable, IEquatable<Account>, IComparer<Account> {
         decimal balance;
         Customer owner;
         Employee? advisor;

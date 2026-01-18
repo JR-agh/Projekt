@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace ConsoleApp1 {
-    internal abstract class Person : IEquatable<Person> {
+    public abstract class Person : IEquatable<Person> {
         string firstName;
         string lastName;
         string pesel;

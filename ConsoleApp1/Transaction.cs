@@ -6,12 +6,12 @@ using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace ConsoleApp1 {
-    enum TransactionType {
+    public enum TransactionType {
         Transfer,
         Deposit,
         Withdrawal
     }
-    internal class Transaction : ICloneable, IJSONSaveLoad {
+    public class Transaction : ICloneable, IJSONSaveLoad {
         int transactionID;
         decimal amount;
         Account? sender;
