@@ -64,7 +64,7 @@ namespace ConsoleApp1 {
         }
         public static Transaction LoadFromJSON(string fileName) {
             string jsonString = File.ReadAllText(fileName);
-            Transaction transaction = (Transaction)JsonSerializer.Deserialize<Transaction>(jsonString);
+            Transaction transaction = JsonSerializer.Deserialize<Transaction>(jsonString);
             return transaction;
         }
         public void SaveToJSON() {

@@ -30,7 +30,7 @@ namespace ConsoleApp1 {
         }
         public static Customer LoadFromJSON(string fileName) {
 			string jsonString = File.ReadAllText(fileName);
-			Customer customer = (Customer)JsonSerializer.Deserialize<Customer>(jsonString);
+			Customer customer = JsonSerializer.Deserialize<Customer>(jsonString);
 			return customer;
 		}
         public void SaveToJSON() {

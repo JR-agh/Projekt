@@ -41,7 +41,7 @@ namespace ConsoleApp1 {
         }
         public static Employee LoadFromJSON(string fileName) {
             string jsonString = File.ReadAllText(fileName);
-            Employee employee = (Employee)JsonSerializer.Deserialize<Employee>(jsonString);
+            Employee employee = JsonSerializer.Deserialize<Employee>(jsonString);
             return employee;
         }
         public void SaveToJSON() {
