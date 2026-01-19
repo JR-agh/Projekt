@@ -3,18 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace ConsoleApp1 {
-    public class Customer : Person, IJSONSaveLoad {
+    public class Customer : Person, IJSONSaveLoad<Customer> {
         Account? personalAccount;
 
         Account? PersonalAccount { get => personalAccount; set => personalAccount = value; }
+
+        public Customer() : base() { }
+
         public Customer(string firstName, string lastName, string pesel, string telNumber, DateTime dateOfBirth) :
             base(firstName, lastName, pesel, telNumber, dateOfBirth) {
 
         }
-        void AssignAccount(Account account) {
+		public void AssignAccount(Account account) {
             PersonalAccount = account;
         }
         public override bool Equals(Person? other) {
@@ -24,15 +28,22 @@ namespace ConsoleApp1 {
                 return true;
             return false;
         }
-        public void LoadToJSON() {
-            throw new NotImplementedException();
-        }
+        public static Customer LoadFromJSON(string fileName) {
+			string jsonString = File.ReadAllText(fileName);
+			Customer customer = (Customer)JsonSerializer.Deserialize<Customer>(jsonString);
+			return customer;
+		}
         public void SaveToJSON() {
-            StringBuilder sb = new("customer");
+			var options = new JsonSerializerOptions {
+				WriteIndented = true,
+				ReferenceHandler = ReferenceHandler.Preserve,
+				IncludeFields = true
+			};
+			StringBuilder sb = new("customer");
             sb.Append(this.Pesel);
             sb.Append(".json");
             string fileName = sb.ToString();
-            string jsonString = JsonSerializer.Serialize(this);
+            string jsonString = JsonSerializer.Serialize(this, options);
             File.WriteAllText(fileName, jsonString);
         }
     }

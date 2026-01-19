@@ -8,7 +8,7 @@ using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace ConsoleApp1 {
-    public class Account : IComparable, IEquatable<Account>, IComparer<Account> {
+    public class Account : IComparable, IEquatable<Account>, IComparer<Account>, IJSONSaveLoad<Account> {
         decimal balance;
         Customer owner;
         Employee? advisor;
@@ -16,6 +16,10 @@ namespace ConsoleApp1 {
         string accountNumber;
         List<Transaction> transactions;
         Transaction? transactionOnHold;
+
+        public Account() {
+
+        }
 
         public Account(Customer owner) {
             IsRestricted = false;
@@ -46,13 +50,13 @@ namespace ConsoleApp1 {
         }
 
         public bool IsRestricted { get => isRestricted; set => isRestricted = value; }
-        internal Employee Advisor { get => advisor; set => advisor = value; }
-        internal Customer Owner { get => owner; set => owner = value; }
+		public Employee Advisor { get => advisor; set => advisor = value; }
+		public Customer Owner { get => owner; set => owner = value; }
         public decimal Balance { get => balance; set => balance = value; }
-        
-        internal List<Transaction> Transactions { get => transactions; set => transactions = value; }
+
+		public List<Transaction> Transactions { get => transactions; set => transactions = value; }
         public string AccountNumber { get => accountNumber; set => accountNumber = value; }
-        internal Transaction? TransactionOnHold { get => transactionOnHold; set => transactionOnHold = value; }
+		public Transaction? TransactionOnHold { get => transactionOnHold; set => transactionOnHold = value; }
 
         public void AddAdvisor(Employee advisor) {
             Advisor = advisor;
@@ -73,7 +77,7 @@ namespace ConsoleApp1 {
             TransactionOnHold = null;
         }
 
-        bool ProccessTransaction(Transaction transaction) {
+		public bool ProccessTransaction(Transaction transaction) {
             if (this.CheckTransaction(transaction)) {
                 this.BookTransaction(transaction);
                 return true;
@@ -81,7 +85,7 @@ namespace ConsoleApp1 {
             else
                 return false;
         }
-        bool CheckTransaction(Transaction transaction) {
+        public bool CheckTransaction(Transaction transaction) {
             if (transaction.Amount > 10000) {
                 this.SetRestriction(transaction);
                 return false;
@@ -89,7 +93,7 @@ namespace ConsoleApp1 {
             else
                 return true;
         }
-        void BookTransaction(Transaction transaction) {
+		public void BookTransaction(Transaction transaction) {
             Transactions.Add(transaction);
             if ((transaction.Type == TransactionType.Transfer && transaction.Sender == this) || transaction.Type == TransactionType.Withdrawal)
                 Balance -= transaction.Amount;
@@ -117,17 +121,27 @@ namespace ConsoleApp1 {
                 return false;
         }
         public int Compare(Account? x, Account? y) {
-            throw new NotImplementedException();
+            if(x == null || y == null) return 1;
+            if(x.balance >  y.balance) return -1;
+            if(x.balance == y.balance) return 0;
+            return 1;
         }
-        public void LoadToJSON() {
-            throw new NotImplementedException();
-        }
+        public static Account LoadFromJSON(string fileName) {
+			string jsonString = File.ReadAllText(fileName);
+			Account account = JsonSerializer.Deserialize<Account>(jsonString);
+			return account;
+		}
         public void SaveToJSON() {
-            StringBuilder sb = new("account");
+			var options = new JsonSerializerOptions {
+				WriteIndented = true,
+				ReferenceHandler = ReferenceHandler.Preserve,
+				IncludeFields = true
+			};
+			StringBuilder sb = new("account");
             sb.Append(this.AccountNumber);
             sb.Append(".json");
             string fileName = sb.ToString();
-            string jsonString = JsonSerializer.Serialize(this);
+            string jsonString = JsonSerializer.Serialize(this, options);
             File.WriteAllText(fileName, jsonString);
         }
     }

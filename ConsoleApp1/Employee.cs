@@ -4,18 +4,19 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace ConsoleApp1 {
-    public class Employee : Person, IJSONSaveLoad {
+    public class Employee : Person, IJSONSaveLoad<Employee> {
         int employeeID;
         List<Account> accounts;
         List<Transaction> susTransactions;
 
         public int EmployeeID { get => employeeID; set => employeeID = value; }
-        internal List<Account> Accounts { get => accounts; set => accounts = value; }
-        internal List<Transaction> SusTransactions { get => susTransactions; set => susTransactions = value; }
-
+        public List<Account> Accounts { get => accounts; set => accounts = value; }
+        public List<Transaction> SusTransactions { get => susTransactions; set => susTransactions = value; }
+        public Employee() : base() { }
         public Employee(string firstName, string lastName, string pesel, string telNumber, DateTime dateOfBirth) :
             base(firstName, lastName, pesel, telNumber, dateOfBirth) {
             Accounts = [];
@@ -38,15 +39,22 @@ namespace ConsoleApp1 {
                 return true;
             return false;
         }
-        public void LoadToJSON() {
-            throw new NotImplementedException();
+        public static Employee LoadFromJSON(string fileName) {
+            string jsonString = File.ReadAllText(fileName);
+            Employee employee = (Employee)JsonSerializer.Deserialize<Employee>(jsonString);
+            return employee;
         }
         public void SaveToJSON() {
+            var options = new JsonSerializerOptions {
+                WriteIndented = true,
+                ReferenceHandler = ReferenceHandler.Preserve,
+                IncludeFields = true
+            };
             StringBuilder sb = new("employee");
             sb.Append(this.Pesel);
             sb.Append(".json");
             string fileName = sb.ToString();
-            string jsonString = JsonSerializer.Serialize(this);
+            string jsonString = JsonSerializer.Serialize(this, options);
             File.WriteAllText(fileName, jsonString);
         }
     }

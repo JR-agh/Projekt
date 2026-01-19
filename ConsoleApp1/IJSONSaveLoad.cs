@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ConsoleApp1 {
-    internal interface IJSONSaveLoad {
+    internal interface IJSONSaveLoad<T> {
         void SaveToJSON();
-        void LoadToJSON();
+        static abstract T LoadFromJSON(string fileName);
     }
 }

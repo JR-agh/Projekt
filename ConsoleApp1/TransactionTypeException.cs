@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1 {
     class TransactionTypeException : Exception {
+        public TransactionTypeException() : base() { }
+        public TransactionTypeException(TransactionType type)
+            : base($"{type} jest błędnym typem operacji.") {
 
+        }
     }
 }

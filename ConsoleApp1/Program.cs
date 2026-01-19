@@ -13,5 +13,8 @@ internal class Program {
         Console.WriteLine(acc1.Advisor); //null
         acc1.AddAdvisor(e1);
         Console.WriteLine(acc1.Advisor.Accounts[0].Balance);
+        acc1.SaveToJSON();
+        Account acc2 = (Account)Account.LoadFromJSON("account93846716944884221953289883.json");
+        Console.WriteLine(acc2.Balance);
     }
 }
