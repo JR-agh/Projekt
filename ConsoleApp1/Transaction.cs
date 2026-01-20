@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 
 namespace ConsoleApp1 {
@@ -12,25 +13,22 @@ namespace ConsoleApp1 {
         Deposit,
         Withdrawal
     }
-    public class Transaction : ICloneable, IJSONSaveLoad<Transaction> {
-        int transactionID;
+    public class Transaction : ICloneable, IJSONSaveLoad<Transaction> { 
+        Guid transactionID;
         decimal amount;
         Account? sender;
         Account? recipient;
         TransactionType type;
         public Transaction () { }
         public Transaction(decimal amount, TransactionType type, Account account1) {
-            if(type == TransactionType.Transfer) {
+            if(type == TransactionType.Transfer)
                 throw new TransactionTypeException(type);
-            }
-            this.Amount = amount;
-            if(type == TransactionType.Deposit) {
-                this.Recipient = account1;
-            }
-            else {
-                this.Sender = account1;
-            }
-            transactionID = 0;
+            if(type == TransactionType.Deposit)
+                Recipient = account1;
+            else
+                Sender = account1;
+            Amount = amount;
+            TransactionID = Guid.NewGuid();
         }
         public Transaction(decimal amount, TransactionType type, Account account1, Account account2) {
             if (type != TransactionType.Transfer) {
@@ -40,7 +38,8 @@ namespace ConsoleApp1 {
             Sender = account1;
             Recipient = account2;
         }
-        public int TransactionID { get => transactionID; set => transactionID = value; }
+        [Key]
+        public Guid TransactionID { get => transactionID; private set => transactionID = value; }
         public decimal Amount { get => amount; set => amount = value; }
         public TransactionType Type { get => type; set => type = value; }
         public Account Sender {

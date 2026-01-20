@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -13,7 +14,8 @@ namespace ConsoleApp1 {
         Customer owner;
         Employee? advisor;
         bool isRestricted;
-        string accountNumber;
+        [Key]
+        public string accountNumber;
         List<Transaction> transactions;
         Transaction? transactionOnHold;
 
@@ -33,6 +35,7 @@ namespace ConsoleApp1 {
             AccountNumber = sb.ToString();
             TransactionOnHold = null;
             Transactions = [];
+            owner.AssignAccount(this);
         }
 
         public Account(Customer owner, Employee advisor) {

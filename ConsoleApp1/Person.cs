@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 
 namespace ConsoleApp1 {
@@ -22,6 +23,7 @@ namespace ConsoleApp1 {
         }
         public string FirstName {get => firstName; set => firstName = value; }
         public string LastName { get => lastName; set => lastName = value; }
+        [Key]
         public string Pesel { get => pesel;
             set {
                 Regex regex = new("^[0-9]{11}$");
