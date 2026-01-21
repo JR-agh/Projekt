@@ -11,7 +11,7 @@ namespace ConsoleApp1 {
     public class Customer : Person, IJSONSaveLoad<Customer> {
         Account? personalAccount;
 
-        Account? PersonalAccount { get => personalAccount; set => personalAccount = value; }
+        public Account? PersonalAccount { get => personalAccount; set => personalAccount = value; }
 
         public Customer() : base() { }
 

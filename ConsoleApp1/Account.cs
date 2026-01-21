@@ -14,7 +14,6 @@ namespace ConsoleApp1 {
         Customer owner;
         Employee? advisor;
         bool isRestricted;
-        [Key]
         public string accountNumber;
         List<Transaction> transactions;
         Transaction? transactionOnHold;
@@ -22,7 +21,6 @@ namespace ConsoleApp1 {
         public Account() {
 
         }
-
         public Account(Customer owner) {
             IsRestricted = false;
             Balance = 0;
@@ -58,6 +56,7 @@ namespace ConsoleApp1 {
         public decimal Balance { get => balance; set => balance = value; }
 
 		public List<Transaction> Transactions { get => transactions; set => transactions = value; }
+        [Key]
         public string AccountNumber { get => accountNumber; set => accountNumber = value; }
 		public Transaction? TransactionOnHold { get => transactionOnHold; set => transactionOnHold = value; }
 
