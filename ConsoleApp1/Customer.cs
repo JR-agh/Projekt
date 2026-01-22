@@ -47,5 +47,8 @@ namespace ConsoleApp1 {
             string jsonString = JsonSerializer.Serialize(this, options);
             File.WriteAllText(fileName, jsonString);
         }
+        public override string ToString() {
+            return base.ToString();
+        }
     }
 }

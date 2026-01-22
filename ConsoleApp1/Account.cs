@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace ConsoleApp1 {
     public class Account : IComparable, IEquatable<Account>, IComparer<Account>, IJSONSaveLoad<Account> {
         decimal balance;
-        Customer owner;
+        Customer owner; //chyba należy zmienić owner na owner pesel i podobnie z employee, żeby ogarnąć klucze
         Employee? advisor;
         bool isRestricted;
         public string accountNumber;
@@ -145,6 +145,9 @@ namespace ConsoleApp1 {
             string fileName = sb.ToString();
             string jsonString = JsonSerializer.Serialize(this, options);
             File.WriteAllText(fileName, jsonString);
+        }
+        public override string ToString() {
+            return $"{AccountNumber} - {Owner.FirstName} {Owner.LastName}";
         }
     }
 }

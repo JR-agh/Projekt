@@ -11,7 +11,7 @@ namespace ConsoleApp1 {
         }
         public DbSet<Account> Accounts {  get; set; }  
         public DbSet<Transaction> Transactions { get; set; }
-        public DbSet<Employee> Employeees { get; set; }
+        public DbSet<Employee> Employees { get; set; }
         public DbSet<Customer> Customers {  get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder) {
             // Konfiguracja relacji 1:1

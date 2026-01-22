@@ -79,5 +79,20 @@ namespace ConsoleApp1 {
             string jsonString = JsonSerializer.Serialize(this, options);
             File.WriteAllText(fileName, jsonString);
         }
+        public override string ToString() {
+            StringBuilder sb = new();
+            switch (Type) {
+                case TransactionType.Transfer:
+                    sb.Append($"Transakcja {TransactionID} o kwocie {Amount} z rachunku {sender.AccountNumber} na rachunek {recipient.AccountNumber}");
+                    break;
+                case TransactionType.Deposit:
+                    sb.Append($"Depozyt {TransactionID} o kwocie {Amount} na rachunek {recipient.AccountNumber}");
+                    break;
+                case TransactionType.Withdrawal:
+                    sb.Append($"Wypłata {TransactionID} o kwocie {Amount} z rachunku {sender.AccountNumber}");
+                    break;
+            }
+            return sb.ToString();
+        }
     }
 }

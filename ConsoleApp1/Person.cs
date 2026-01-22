@@ -21,6 +21,7 @@ namespace ConsoleApp1 {
             TelNumber = telNumber;
             DateOfBirth = dateOfBirth;
         }
+        public string FullName => $"{FirstName} {LastName}";
         public string FirstName {get => firstName; set => firstName = value; }
         public string LastName { get => lastName; set => lastName = value; }
         [Key]
@@ -50,5 +51,8 @@ namespace ConsoleApp1 {
             Console.WriteLine($"{FirstName}, {LastName}, {Pesel}");
         }
         public abstract bool Equals(Person? other);
+        public override string ToString() {
+            return $"{FirstName} {LastName}, {Pesel}, tel.: {TelNumber}";
+        }
     }
 }
