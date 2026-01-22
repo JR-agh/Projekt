@@ -1,0 +1,27 @@
+﻿<Window x:Class="WpfApp1.AddPerson"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="Dodaj" Height="550" Width="700">
+    <Grid>
+        <TextBox HorizontalAlignment="Left" x:Name="TxtFName" Height="22" Margin="160,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180"/>
+        <Label Content="Imię:" HorizontalAlignment="Left" Height="25" Margin="50,10,0,0" VerticalAlignment="Top" Width="70"/>
+        <Label Content="Nazwisko:" HorizontalAlignment="Left" Height="25" Margin="50,40,0,0" VerticalAlignment="Top" Width="70"/>
+        <TextBox HorizontalAlignment="Left" x:Name="TxtLName" Height="22" Margin="160,42,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180"/>
+        <Label Content="Pesel:" HorizontalAlignment="Left" Height="25" Margin="50,70,0,0" VerticalAlignment="Top" Width="70"/>
+        <Label Content="Nr tel.:" HorizontalAlignment="Left" Height="25" Margin="50,100,0,0" VerticalAlignment="Top" Width="70"/>
+        <Label Content="Data urodzenia:" HorizontalAlignment="Left" Height="25" Margin="50,130,0,0" VerticalAlignment="Top" Width="97"/>
+        <TextBox HorizontalAlignment="Left" x:Name="TxtPesel" Height="22" Margin="160,73,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180"/>
+        <TextBox HorizontalAlignment="Left" x:Name="TxtTelNmb" Height="22" Margin="160,103,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180"/>
+        <Label Content="(000-000-000)" HorizontalAlignment="Left" Height="25" Margin="354,100,0,0" VerticalAlignment="Top" Width="96"/>
+        <Button Content="Anuluj" Click="Click_Back" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,10" Height="30" Width="150"/>
+        <Button Content="Dodaj" Click="Click_AddPerson" Margin="0,0,10,10" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="30" Width="150"/>
+        <ComboBox SelectedIndex="0" HorizontalAlignment="Left" x:Name="BxDay" Height="22" Margin="160,134,0,0" VerticalAlignment="Top" Width="41"/>
+        <ComboBox SelectedIndex="0" HorizontalAlignment="Left" x:Name="BxMonth" Height="22" Margin="206,134,0,0" VerticalAlignment="Top" Width="41"/>
+        <ComboBox SelectedIndex="70" HorizontalAlignment="Left" x:Name="BxYear" Height="22" Margin="250,134,0,0" VerticalAlignment="Top" Width="90"/>
+
+    </Grid>
+</Window>

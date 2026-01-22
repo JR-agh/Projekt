@@ -1,0 +1,15 @@
+﻿<Window x:Class="WpfApp1.TransactionsHistory"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="Historia transakcji" Height="450" Width="800" ResizeMode="NoResize">
+    <Grid>
+        <ListBox HorizontalAlignment="Left" Margin="50,50,0,0" Height="340" Width="700" VerticalAlignment="Top" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+        <Label Content="Nr konta:" HorizontalAlignment="Left" Height="25" Margin="50,10,0,0" VerticalAlignment="Top" Width="70"/>
+        <TextBox HorizontalAlignment="Left" Height="22" Margin="150,12,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="150"/>
+
+    </Grid>
+</Window>

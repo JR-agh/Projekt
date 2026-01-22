@@ -13,7 +13,7 @@ namespace ConsoleApp1.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202601211706538_InitialCreate"; }
+            get { return "202601221108303_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

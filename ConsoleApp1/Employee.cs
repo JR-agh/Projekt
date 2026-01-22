@@ -10,22 +10,25 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1 {
     public class Employee : Person, IJSONSaveLoad<Employee> {
-        int employeeID;
         List<Account> accounts;
+        List<string> accountsNumbers;
         List<Transaction> susTransactions;
 
-        public int EmployeeID { get => employeeID; set => employeeID = value; }
         public List<Account> Accounts { get => accounts; set => accounts = value; }
         public List<Transaction> SusTransactions { get => susTransactions; set => susTransactions = value; }
+        public List<string> AccountsNumbers { get => accountsNumbers; set => accountsNumbers = value; }
+
         public Employee() : base() { }
         public Employee(string firstName, string lastName, string pesel, string telNumber, DateTime dateOfBirth) :
             base(firstName, lastName, pesel, telNumber, dateOfBirth) {
             Accounts = [];
+            AccountsNumbers = [];
             SusTransactions = [];
         }
 
         public void AddAccount(Account account) {
             Accounts.Add(account);
+            AccountsNumbers.Add(account.AccountNumber);
         }
         public void Approve(Transaction transaction) {
             transaction.Sender.RemoveRestricion();

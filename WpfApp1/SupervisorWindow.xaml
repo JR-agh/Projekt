@@ -1,0 +1,16 @@
+﻿<Window x:Class="WpfApp1.SupervisorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="Manager" Height="260" Width="650" ResizeMode="NoResize">
+    <Grid>
+        <Button Content="Dodaj pracownika" Click="Click_AddEmployee" HorizontalAlignment="Left" Height="30" Margin="50,115,0,0" VerticalAlignment="Top" Width="150"/>
+        <Button Content="Powrót do menu" Click="Click_BackToMenu" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,10" Height="30" Width="150"/>
+        <Button Content="Lista pracowników" Click="Click_ShowEmployees" HorizontalAlignment="Left" Height="30" Margin="250,115,0,0" VerticalAlignment="Top" Width="150"/>
+        <Button Content="Lista klientów" Click="Click_ShowCustomers" HorizontalAlignment="Left" Height="30" Margin="450,115,0,0" VerticalAlignment="Top" Width="150"/>
+
+    </Grid>
+</Window>

@@ -11,10 +11,11 @@ using System.Threading.Tasks;
 namespace ConsoleApp1 {
     public class Account : IComparable, IEquatable<Account>, IComparer<Account>, IJSONSaveLoad<Account> {
         decimal balance;
-        Customer owner; //chyba należy zmienić owner na owner pesel i podobnie z employee, żeby ogarnąć klucze
+        Customer owner;
+        string ownersPesel;
         Employee? advisor;
         bool isRestricted;
-        public string accountNumber;
+        string accountNumber;
         List<Transaction> transactions;
         Transaction? transactionOnHold;
 
@@ -34,6 +35,7 @@ namespace ConsoleApp1 {
             TransactionOnHold = null;
             Transactions = [];
             owner.AssignAccount(this);
+            OwnersPesel = owner.Pesel;
         }
 
         public Account(Customer owner, Employee advisor) {
@@ -56,9 +58,11 @@ namespace ConsoleApp1 {
         public decimal Balance { get => balance; set => balance = value; }
 
 		public List<Transaction> Transactions { get => transactions; set => transactions = value; }
-        [Key]
+        
         public string AccountNumber { get => accountNumber; set => accountNumber = value; }
 		public Transaction? TransactionOnHold { get => transactionOnHold; set => transactionOnHold = value; }
+        [Key]
+        public string OwnersPesel { get => ownersPesel; set => ownersPesel = value; }
 
         public void AddAdvisor(Employee advisor) {
             Advisor = advisor;

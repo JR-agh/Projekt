@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="ConsoleApp1">
+      <HintPath>..\..\Projekt\ConsoleApp1\bin\Debug\net8.0\ConsoleApp1.dll</HintPath>
+    </Reference>
+    <Reference Include="Projekt">
+      <HintPath>..\..\Projekt\Projekt\bin\Debug\net8.0\Projekt.dll</HintPath>
+    </Reference>
+    <Reference Include="Projekt">
+      <HintPath>..\..\Projekt\Projekt\bin\Debug\net8.0\Projekt.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

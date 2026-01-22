@@ -1,0 +1,22 @@
+﻿<Window x:Class="WpfApp1.Customer2Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="Klient" Height="350" Width="650" ResizeMode="NoResize">
+    <Grid>
+        <TextBox HorizontalAlignment="Left" IsReadOnly="True" x:Name="TxtFName" Height="22" Margin="160,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="180"/>
+        <Label Content="Imię:" HorizontalAlignment="Left" Height="25" Margin="50,10,0,0" VerticalAlignment="Top" Width="70"/>
+        <Label Content="Nazwisko:" HorizontalAlignment="Left" Height="25" Margin="50,40,0,0" VerticalAlignment="Top" Width="70"/>
+        <Label Content="Nr konta:" HorizontalAlignment="Left" Height="25" Margin="50,70,0,0" VerticalAlignment="Top" Width="70"/>
+        <TextBox HorizontalAlignment="Left" IsReadOnly="True" x:Name="TxtLName" Height="22" Margin="160,42,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="180"/>
+        <TextBox HorizontalAlignment="Left" IsReadOnly="True" x:Name="TxtAccNmb" Height="22" Margin="160,72,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="180"/>
+        <Button Content="Powrót do menu" Click="Click_BackToMenu" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,10" Height="30" Width="150"/>
+        <Button Content="Nowa operacja" Click="Click_NewTransfer" HorizontalAlignment="Left" Height="30" Margin="50,215,0,0" VerticalAlignment="Top" Width="150"/>
+        <Button Content="Historia transakcji" Click="Click_ShowTransactionHistory" HorizontalAlignment="Left" Height="30" Margin="250,215,0,0" VerticalAlignment="Top" Width="150"/>
+        <Button Content="Załóż konto" Click="Click_CreateAccount" Margin="0,0,10,10" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="150"/>
+
+    </Grid>
+</Window>

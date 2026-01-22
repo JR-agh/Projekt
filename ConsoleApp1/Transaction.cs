@@ -9,24 +9,33 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1 {
     public enum TransactionType {
+        [System.ComponentModel.Description("Przelew")]
         Transfer,
+        [System.ComponentModel.Description("Depozyt")]
         Deposit,
+        [System.ComponentModel.Description("Wypłata")]
         Withdrawal
     }
     public class Transaction : ICloneable, IJSONSaveLoad<Transaction> { 
         Guid transactionID;
         decimal amount;
         Account? sender;
+        string sendersPesel;
+        string recipientsPesel;
         Account? recipient;
         TransactionType type;
         public Transaction () { }
         public Transaction(decimal amount, TransactionType type, Account account1) {
             if(type == TransactionType.Transfer)
                 throw new TransactionTypeException(type);
-            if(type == TransactionType.Deposit)
+            if (type == TransactionType.Deposit) {
                 Recipient = account1;
-            else
+                RecipientsPesel = account1.OwnersPesel;
+            }
+            else {
                 Sender = account1;
+                SendersPesel = account1.OwnersPesel;
+            }
             Amount = amount;
             TransactionID = Guid.NewGuid();
         }
@@ -36,7 +45,9 @@ namespace ConsoleApp1 {
             }
             Amount = amount;
             Sender = account1;
+            SendersPesel = account1.OwnersPesel;
             Recipient = account2;
+            RecipientsPesel = account2.OwnersPesel;
         }
         [Key]
         public Guid TransactionID { get => transactionID; private set => transactionID = value; }
@@ -58,6 +69,10 @@ namespace ConsoleApp1 {
             }
             set => recipient = value;
         }
+
+        public string SendersPesel { get => sendersPesel; set => sendersPesel = value; }
+        public string RecipientsPesel { get => recipientsPesel; set => recipientsPesel = value; }
+
         public object Clone() {
             return (Transaction)MemberwiseClone();
         }
