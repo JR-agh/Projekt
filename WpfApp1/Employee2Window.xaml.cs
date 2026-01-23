@@ -27,7 +27,10 @@ namespace WpfApp1 {
             TxtFName.Text = employee.FirstName;
             TxtLName.Text = employee.LastName;
         }
-        //selecting accounts, adding customers
+       public void Click_CheckSusTransactions(object sender, RoutedEventArgs e) {
+            Window nWn = new CheckSusTransactions(employee);
+            nWn.Show();
+       }
 
         public void Click_BackToMenu(object sender, RoutedEventArgs e) {
             MainWindow mWindow = new();

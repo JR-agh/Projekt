@@ -16,12 +16,6 @@
     <Reference Include="ConsoleApp1">
       <HintPath>..\..\Projekt\ConsoleApp1\bin\Debug\net8.0\ConsoleApp1.dll</HintPath>
     </Reference>
-    <Reference Include="Projekt">
-      <HintPath>..\..\Projekt\Projekt\bin\Debug\net8.0\Projekt.dll</HintPath>
-    </Reference>
-    <Reference Include="Projekt">
-      <HintPath>..\..\Projekt\Projekt\bin\Debug\net8.0\Projekt.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
 </Project>

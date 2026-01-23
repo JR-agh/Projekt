@@ -19,7 +19,7 @@ namespace WpfApp1 {
     /// </summary>
     public partial class Customer2Window : Window {
         Customer customer;
-        bool hasAccount = false;
+        //bool hasAccount = false;
         public Customer2Window() {
             InitializeComponent();
         }
@@ -31,11 +31,11 @@ namespace WpfApp1 {
                 customer.AssignAccount(currentAccount);
                 if (currentAccount != null) {
                     TxtAccNmb.Text = currentAccount.AccountNumber;
-                    hasAccount = true;
+                    //hasAccount = true;
                 }
                 else {
                     TxtAccNmb.Text = "Brak konta.";
-                    hasAccount = false;
+                    //hasAccount = false;
                 }
             }
             TxtFName.Text = customer.FirstName;
