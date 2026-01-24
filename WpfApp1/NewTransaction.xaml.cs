@@ -46,22 +46,44 @@ namespace WpfApp1 {
             using (var db = new ProjectDbContext()) {
                 var acc = db.Accounts.Find(account.OwnersPesel);
                 var acc2 = db.Accounts.FirstOrDefault(a => a.AccountNumber == this.TxtAcc2Nmb.Text);
-                if (acc2 == null) {
+                if (acc2 == null && (TransactionType)this.CmbTransferType.SelectedValue == TransactionType.Transfer) {
                     MessageBox.Show("Zły numer konta odbiorcy.");
                     return;
                 }
-                switch((TransactionType)this.CmbTransferType.SelectedItem) {
+                decimal amount;
+                try {
+                    amount = decimal.Parse(this.TxtAmount.Text, CultureInfo.InvariantCulture);
+                }
+                catch {
+                    MessageBox.Show("Błędna kwota transakcji");
+                    return;
+                }
+                switch ((TransactionType)this.CmbTransferType.SelectedValue) {
                     case TransactionType.Transfer:
-                        Transaction transaction1 = new(decimal.Parse(this.TxtAmount.Text, CultureInfo.InvariantCulture), TransactionType.Transfer, acc, acc2);
-                        acc.ProccessTransaction(transaction1);
+                        Transaction transaction1 = new(amount, TransactionType.Transfer, acc, acc2);
+                        if (transaction1 == null) {
+                            MessageBox.Show("test1");
+                            return;
+                        }
+                        //acc.ProccessTransaction(transaction1);
                         break;
                     case TransactionType.Deposit:
-                        Transaction transaction2 = new(decimal.Parse(this.TxtAmount.Text, CultureInfo.InvariantCulture), TransactionType.Deposit, acc);
-                        acc.ProccessTransaction(transaction2);
+                        Transaction transaction2 = new(amount, TransactionType.Deposit, acc);
+                        if(transaction2 == null) {
+                            MessageBox.Show("test2");
+                            return;
+                        }
+                        db.Transactions.Add(transaction2);
+                        db.SaveChanges();
+                        //acc.ProccessTransaction(transaction2);
                         break;
                     case TransactionType.Withdrawal:
-                        Transaction transaction3 = new(decimal.Parse(this.TxtAmount.Text, CultureInfo.InvariantCulture), TransactionType.Withdrawal, acc);
-                        acc.ProccessTransaction(transaction3);
+                        Transaction transaction3 = new(amount, TransactionType.Withdrawal, acc);
+                        if (transaction3 == null) {
+                            MessageBox.Show("test3");
+                            return;
+                        }
+                        //acc.ProccessTransaction(transaction3);
                         break;
                 }
             }

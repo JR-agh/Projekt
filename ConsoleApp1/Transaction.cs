@@ -55,16 +55,16 @@ namespace ConsoleApp1 {
         public TransactionType Type { get => type; set => type = value; }
         public Account Sender {
             get {
-                if(sender == null)
-                    throw new InvalidOperationException();
+                //if(sender == null)
+                //    throw new InvalidOperationException();
                 return sender;
             }
             set => sender = value;
         }
         public Account Recipient {
             get {
-                if (recipient == null)
-                    throw new InvalidOperationException();
+                //if (recipient == null)
+                //    throw new InvalidOperationException();
                 return recipient;
             }
             set => recipient = value;

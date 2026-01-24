@@ -7,7 +7,7 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-//test
+
 namespace ConsoleApp1 {
     public class Account : IComparable, IEquatable<Account>, IComparer<Account>, IJSONSaveLoad<Account> {
         decimal balance;
@@ -33,7 +33,7 @@ namespace ConsoleApp1 {
                 sb.Append(rnd.Next(1, 10));
             AccountNumber = sb.ToString();
             TransactionOnHold = null;
-            Transactions = [];
+            Transactions = new();
             owner.AssignAccount(this);
             OwnersPesel = owner.Pesel;
         }
@@ -49,7 +49,7 @@ namespace ConsoleApp1 {
                 sb.Append(rnd.Next(1, 10));
             AccountNumber = sb.ToString();
             TransactionOnHold = null;
-            Transactions = [];
+            Transactions = new();
         }
 
         public bool IsRestricted { get => isRestricted; set => isRestricted = value; }
@@ -100,6 +100,8 @@ namespace ConsoleApp1 {
                 return true;
         }
 		public void BookTransaction(Transaction transaction) {
+            if (Transactions == null)
+                Transactions = new();
             Transactions.Add(transaction);
             if ((transaction.Type == TransactionType.Transfer && transaction.Sender == this) || transaction.Type == TransactionType.Withdrawal)
                 Balance -= transaction.Amount;

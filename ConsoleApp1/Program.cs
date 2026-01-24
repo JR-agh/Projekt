@@ -2,7 +2,7 @@
 
 internal class Program {
     private static void Main(string[] args) {
-        test1();
+        //test1();
     }
     static void test1() {
         DateTime d1 = DateTime.Now;
