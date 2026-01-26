@@ -31,7 +31,6 @@
                 c => new
                     {
                         Pesel = c.String(nullable: false, maxLength: 128),
-                        EmployeeID = c.Int(nullable: false),
                         FirstName = c.String(),
                         LastName = c.String(),
                         TelNumber = c.String(),

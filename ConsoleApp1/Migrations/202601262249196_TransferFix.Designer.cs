@@ -7,13 +7,13 @@ namespace ConsoleApp1.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.5.1")]
-    public sealed partial class a : IMigrationMetadata
+    public sealed partial class TransferFix : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(a));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(TransferFix));
         
         string IMigrationMetadata.Id
         {
-            get { return "202601221941236_a"; }
+            get { return "202601262249196_TransferFix"; }
         }
         
         string IMigrationMetadata.Source

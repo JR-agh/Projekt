@@ -18,6 +18,18 @@ namespace ConsoleApp1 {
             modelBuilder.Entity<Customer>()
                 .HasOptional(c => c.PersonalAccount)
                 .WithRequired(a => a.Owner);
+
+            modelBuilder.Entity<Transaction>()
+                .HasOptional(t => t.Sender)       
+                .WithMany(a => a.SentTransactions)
+                .HasForeignKey(t => t.SendersPesel)
+                .WillCascadeOnDelete(false);   
+
+            modelBuilder.Entity<Transaction>()
+                .HasOptional(t => t.Recipient) 
+                .WithMany(a => a.ReceivedTransactions)
+                .HasForeignKey(t => t.RecipientsPesel)
+                .WillCascadeOnDelete(false);
         }
     }
 }

@@ -21,10 +21,12 @@ namespace WpfApp1 {
     /// Interaction logic for NewTransaction.xaml
     /// </summary>
     public partial class NewTransaction : Window {
+        Customer customer;
         Account account;
-        public NewTransaction(Account account) {
+        public NewTransaction(Customer customer) {
             InitializeComponent();
-            this.account = account;
+            this.customer = customer;
+            this.account = customer.PersonalAccount;
             TxtAccNmb.Text = account.AccountNumber;
             TxtBalance.Text = account.Balance.ToString("F2");
             var transferOptions = Enum.GetValues(typeof(TransactionType)).Cast<TransactionType>().Select(e => new {
@@ -36,6 +38,8 @@ namespace WpfApp1 {
             CmbTransferType.SelectedValuePath = "Value";
         }
         public void Click_Back(object sender, RoutedEventArgs e) {
+            Customer2Window nWn = new(this.customer);
+            nWn.Show();
             this.Close();
         }
         public void Click_AddTransaction(object sender, RoutedEventArgs e) {
@@ -61,32 +65,27 @@ namespace WpfApp1 {
                 switch ((TransactionType)this.CmbTransferType.SelectedValue) {
                     case TransactionType.Transfer:
                         Transaction transaction1 = new(amount, TransactionType.Transfer, acc, acc2);
-                        if (transaction1 == null) {
-                            MessageBox.Show("test1");
-                            return;
-                        }
-                        //acc.ProccessTransaction(transaction1);
+                        acc.ProccessTransaction(transaction1);
+                        acc2.ProccessTransaction(transaction1);
+                        db.Transactions.Add(transaction1);
+                        MessageBox.Show("Udana transakcja.");
                         break;
                     case TransactionType.Deposit:
                         Transaction transaction2 = new(amount, TransactionType.Deposit, acc);
-                        if(transaction2 == null) {
-                            MessageBox.Show("test2");
-                            return;
-                        }
+                        acc.ProccessTransaction(transaction2);
                         db.Transactions.Add(transaction2);
-                        db.SaveChanges();
-                        //acc.ProccessTransaction(transaction2);
+                        MessageBox.Show("Udany depozyt.");
                         break;
                     case TransactionType.Withdrawal:
                         Transaction transaction3 = new(amount, TransactionType.Withdrawal, acc);
-                        if (transaction3 == null) {
-                            MessageBox.Show("test3");
-                            return;
-                        }
-                        //acc.ProccessTransaction(transaction3);
+                        acc.ProccessTransaction(transaction3);
+                        MessageBox.Show("Udana wypłata.");
                         break;
                 }
+                db.SaveChanges();
             }
+            Customer2Window nWn = new(this.customer);
+            nWn.Show();
             this.Close();
         }
         public static string GetEnumDescription(Enum value) {

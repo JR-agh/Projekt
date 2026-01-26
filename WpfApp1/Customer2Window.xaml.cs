@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data.Entity;
 
 namespace WpfApp1 {
     /// <summary>
@@ -43,27 +44,35 @@ namespace WpfApp1 {
         }
         public void Click_ShowTransactionHistory(object sender, RoutedEventArgs e) {
             StringBuilder sb = new();
-            if(customer.PersonalAccount == null) {
+            if (customer.PersonalAccount == null) {
                 MessageBox.Show("Brak konta.");
                 return;
             }
-            if(customer.PersonalAccount.Transactions == null) {
-                MessageBox.Show("Brak transakcji w historii tego konta");
-                return;
-            }
-            foreach (Transaction t in customer.PersonalAccount.Transactions) {
-                sb.Append(t.ToString());
-                sb.Append("\n");
+            using(var db = new ProjectDbContext()) {
+                List<Transaction> transactions = db.Transactions
+                    .Include(t => t.Sender)
+                    .Include(t => t.Recipient)
+                    .Where(t => (t.RecipientsPesel == this.customer.Pesel || t.SendersPesel == this.customer.Pesel))
+                    .ToList();
+                if (transactions.Count == 0 || transactions == null) {
+                    MessageBox.Show("Brak transakcji w historii tego konta");
+                    return;
+                }
+                foreach (Transaction t in transactions) {
+                    sb.Append(t.ToString());
+                    sb.Append("\n");
+                }
             }
             MessageBox.Show(sb.ToString());
         }
         public void Click_NewTransfer(object sender, RoutedEventArgs e) {
-            if(this.customer.PersonalAccount == null) {
+            if (this.customer.PersonalAccount == null) {
                 MessageBox.Show("Nie można wykonać operacji, jeśli nie posiada się konta.");
                 return;
             }
-            Window nWn = new NewTransaction(this.customer.PersonalAccount);
+            Window nWn = new NewTransaction(this.customer);
             nWn.Show();
+            this.Close();
         }
         public void Click_CreateAccount(object sender, RoutedEventArgs e) {
             if (customer.PersonalAccount == null) {
@@ -74,6 +83,9 @@ namespace WpfApp1 {
                     db.SaveChanges();
                     MessageBox.Show($"Utworzono konto o numerze {a1.AccountNumber}.");
                 }
+                Customer2Window nWn = new(this.customer);
+                nWn.Show();
+                this.Close();
             }
             else {
                 MessageBox.Show("Istnieje już konto przypisane do tego klienta.");
@@ -84,12 +96,6 @@ namespace WpfApp1 {
             MainWindow mWindow = new();
             mWindow.Show();
             this.Close();
-        }
-        public void Click_ShowBalance(object sender, RoutedEventArgs e) {
-            if (customer.PersonalAccount == null)
-                MessageBox.Show("Brak konta.");
-            else
-                MessageBox.Show(customer.PersonalAccount.ToString());
         }
     }
 }
