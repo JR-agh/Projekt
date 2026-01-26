@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace ConsoleApp1 {
     public class Account : IComparable, IEquatable<Account>, IComparer<Account>, IJSONSaveLoad<Account> {
@@ -16,7 +17,8 @@ namespace ConsoleApp1 {
         Employee? advisor;
         bool isRestricted;
         string accountNumber;
-        List<Transaction> transactions;
+        List<Transaction> sentTransactions;
+        List<Transaction> receivedTransactions;
         Transaction? transactionOnHold;
 
         public Account() {
@@ -33,7 +35,8 @@ namespace ConsoleApp1 {
                 sb.Append(rnd.Next(1, 10));
             AccountNumber = sb.ToString();
             TransactionOnHold = null;
-            Transactions = new();
+            SentTransactions = new();
+            ReceivedTransactions = new();
             owner.AssignAccount(this);
             OwnersPesel = owner.Pesel;
         }
@@ -49,20 +52,20 @@ namespace ConsoleApp1 {
                 sb.Append(rnd.Next(1, 10));
             AccountNumber = sb.ToString();
             TransactionOnHold = null;
-            Transactions = new();
+            SentTransactions = new();
+            ReceivedTransactions = new();
         }
 
         public bool IsRestricted { get => isRestricted; set => isRestricted = value; }
 		public Employee Advisor { get => advisor; set => advisor = value; }
 		public Customer Owner { get => owner; set => owner = value; }
         public decimal Balance { get => balance; set => balance = value; }
-
-		public List<Transaction> Transactions { get => transactions; set => transactions = value; }
-        
         public string AccountNumber { get => accountNumber; set => accountNumber = value; }
 		public Transaction? TransactionOnHold { get => transactionOnHold; set => transactionOnHold = value; }
         [Key]
         public string OwnersPesel { get => ownersPesel; set => ownersPesel = value; }
+        public List<Transaction> SentTransactions { get => sentTransactions; set => sentTransactions = value; }
+        public List<Transaction> ReceivedTransactions { get => receivedTransactions; set => receivedTransactions = value; }
 
         public void AddAdvisor(Employee advisor) {
             Advisor = advisor;
@@ -100,13 +103,15 @@ namespace ConsoleApp1 {
                 return true;
         }
 		public void BookTransaction(Transaction transaction) {
-            if (Transactions == null)
-                Transactions = new();
-            Transactions.Add(transaction);
-            if ((transaction.Type == TransactionType.Transfer && transaction.Sender == this) || transaction.Type == TransactionType.Withdrawal)
+            
+            if ((transaction.Type == TransactionType.Transfer && transaction.Sender == this) || transaction.Type == TransactionType.Withdrawal) {
                 Balance -= transaction.Amount;
-            else
+                //SentTransactions.Add(transaction);
+            }
+            else {
                 Balance += transaction.Amount;
+                //ReceivedTransactions.Add(transaction);
+            }
         }
         public int CompareTo(object? obj) {
             if (obj == null) return 1;
