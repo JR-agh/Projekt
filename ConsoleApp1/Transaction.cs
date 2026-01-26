@@ -20,8 +20,8 @@ namespace ConsoleApp1 {
         Guid transactionID;
         decimal amount;
         Account? sender;
-        string sendersPesel;
-        string recipientsPesel;
+        string? sendersPesel;
+        string? recipientsPesel;
         Account? recipient;
         TransactionType type;
         public Transaction () { }
@@ -95,19 +95,24 @@ namespace ConsoleApp1 {
             File.WriteAllText(fileName, jsonString);
         }
         public override string ToString() {
-            StringBuilder sb = new();
+            /*StringBuilder sb = new();
             switch (Type) {
                 case TransactionType.Transfer:
-                    sb.Append($"Transakcja {TransactionID} o kwocie {Amount} z rachunku {sender.AccountNumber} na rachunek {recipient.AccountNumber}");
+                    sb.Append($"Transakcja {TransactionID} o kwocie {Amount} z rachunku {sendersPesel} na rachunek {recipientsPesel}");
                     break;
                 case TransactionType.Deposit:
-                    sb.Append($"Depozyt {TransactionID} o kwocie {Amount} na rachunek {recipient.AccountNumber}");
+                    sb.Append($"Depozyt {TransactionID} o kwocie {Amount} na rachunek {recipientsPesel}");
                     break;
                 case TransactionType.Withdrawal:
-                    sb.Append($"Wypłata {TransactionID} o kwocie {Amount} z rachunku {sender.AccountNumber}");
+                    sb.Append($"Wypłata {TransactionID} o kwocie {Amount} z rachunku {sendersPesel}");
                     break;
             }
-            return sb.ToString();
+            return sb.ToString();*/
+            if (recipientsPesel == null)
+                return $"Wypłata {TransactionID} o kwocie {Amount} z rachunku {sender.AccountNumber}.";
+            if (sendersPesel == null)
+                return $"Depozyt {TransactionID} o kwocie {Amount} na rachunek {recipient.AccountNumber}.";
+            return $"Transakcja {TransactionID} o kwocie {Amount} z rachunku {sendersPesel} na rachunek {recipientsPesel}.";
         }
     }
 }
