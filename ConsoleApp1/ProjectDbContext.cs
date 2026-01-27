@@ -5,6 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/// <summary>
+/// Klasa kontekstu Entity Framework, konfigurująca relacje między tabelami bazy danych.
+/// </summary>
+
 namespace ConsoleApp1 {
     public class ProjectDbContext : DbContext {
         public ProjectDbContext() : base("name=ProjectDbContext") {

@@ -1,0 +1,123 @@
+\doxysection{Console\+App1.\+Person Class Reference}
+\hypertarget{class_console_app1_1_1_person}{}\label{class_console_app1_1_1_person}\index{ConsoleApp1.Person@{ConsoleApp1.Person}}
+
+
+Klasa abstrakcyjna reprezentująca osobę w systemie. Zawiera podstawowe dane osobowe oraz walidację PESEL i numeru telefonu.  
+
+
+Inheritance diagram for Console\+App1.\+Person:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_console_app1_1_1_person}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_console_app1_1_1_person_a77239f4c4c6561e820b49e7d6059e150}\label{class_console_app1_1_1_person_a77239f4c4c6561e820b49e7d6059e150} 
+virtual void {\bfseries Display\+Personal\+Info} ()
+\begin{DoxyCompactList}\small\item\em Wyświetla podstawowe informacje o osobie w konsoli. \end{DoxyCompactList}\item 
+\Hypertarget{class_console_app1_1_1_person_a351c19d9c9332db3a1a7d8197ff3498a}\label{class_console_app1_1_1_person_a351c19d9c9332db3a1a7d8197ff3498a} 
+bool {\bfseries Equals} (\doxymbox{\hyperlink{class_console_app1_1_1_person_a03aa6b89164901feb13f78f92b355b56}{Person}}? other)
+\begin{DoxyCompactList}\small\item\em Sprawdza równość z innym obiektem klasy \doxylink{class_console_app1_1_1_person}{Person} na podstawie numeru PESEL. \end{DoxyCompactList}\item 
+\Hypertarget{class_console_app1_1_1_person_a0d4e1c276c18b6ceed433ede25e6af07}\label{class_console_app1_1_1_person_a0d4e1c276c18b6ceed433ede25e6af07} 
+override string {\bfseries To\+String} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_console_app1_1_1_person_a03aa6b89164901feb13f78f92b355b56}\label{class_console_app1_1_1_person_a03aa6b89164901feb13f78f92b355b56} 
+{\bfseries Person} ()
+\begin{DoxyCompactList}\small\item\em Konstruktor bezparametrowy wymagany przez serializację. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_console_app1_1_1_person_a852880b2f0a4ad8c54a0c23a4d002c1b}{Person}} (string first\+Name, string last\+Name, string pesel, string tel\+Number, Date\+Time date\+Of\+Birth)
+\begin{DoxyCompactList}\small\item\em Inicjalizuje nową instancję klasy \doxylink{class_console_app1_1_1_person}{Person}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_console_app1_1_1_person_addedc76dce0eacdc0fc89a6382c8690b}\label{class_console_app1_1_1_person_addedc76dce0eacdc0fc89a6382c8690b} 
+string {\bfseries Full\+Name}\hspace{0.3cm}{\ttfamily  \+[get]\+}
+\begin{DoxyCompactList}\small\item\em Zwraca pełne imię i nazwisko. \end{DoxyCompactList}\item 
+\Hypertarget{class_console_app1_1_1_person_a7a367252c873e83ca25eb3ca739bc5eb}\label{class_console_app1_1_1_person_a7a367252c873e83ca25eb3ca739bc5eb} 
+string {\bfseries First\+Name}\hspace{0.3cm}{\ttfamily  \+[get, set]\+}
+\item 
+\Hypertarget{class_console_app1_1_1_person_ada35f057c55135301642dd31fce88321}\label{class_console_app1_1_1_person_ada35f057c55135301642dd31fce88321} 
+string {\bfseries Last\+Name}\hspace{0.3cm}{\ttfamily  \+[get, set]\+}
+\item 
+string \doxymbox{\hyperlink{class_console_app1_1_1_person_a8bfe6d22e03214006194a2e912abac6a}{Pesel}}\hspace{0.3cm}{\ttfamily  \+[get, set]\+}
+\begin{DoxyCompactList}\small\item\em Numer PESEL. Walidowany pod kątem posiadania dokładnie 11 cyfr. \end{DoxyCompactList}\item 
+string \doxymbox{\hyperlink{class_console_app1_1_1_person_a0457a160319171d05599a7da666b96db}{Tel\+Number}}\hspace{0.3cm}{\ttfamily  \+[get, set]\+}
+\begin{DoxyCompactList}\small\item\em Numer telefonu. Walidowany pod kątem formatu XXX-\/\+XXX-\/\+XXX. \end{DoxyCompactList}\item 
+\Hypertarget{class_console_app1_1_1_person_a3ee0e670e37d4d98b0a69eaabe3706da}\label{class_console_app1_1_1_person_a3ee0e670e37d4d98b0a69eaabe3706da} 
+Date\+Time {\bfseries Date\+Of\+Birth}\hspace{0.3cm}{\ttfamily  \+[get, set]\+}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Klasa abstrakcyjna reprezentująca osobę w systemie. Zawiera podstawowe dane osobowe oraz walidację PESEL i numeru telefonu. 
+
+\label{doc-constructors}
+\Hypertarget{class_console_app1_1_1_person_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_console_app1_1_1_person_a852880b2f0a4ad8c54a0c23a4d002c1b}\index{ConsoleApp1.Person@{ConsoleApp1.Person}!Person@{Person}}
+\index{Person@{Person}!ConsoleApp1.Person@{ConsoleApp1.Person}}
+\doxysubsubsection{\texorpdfstring{Person()}{Person()}}
+{\footnotesize\ttfamily \label{class_console_app1_1_1_person_a852880b2f0a4ad8c54a0c23a4d002c1b} 
+Console\+App1.\+Person.\+Person (\begin{DoxyParamCaption}\item[{string}]{first\+Name}{, }\item[{string}]{last\+Name}{, }\item[{string}]{pesel}{, }\item[{string}]{tel\+Number}{, }\item[{Date\+Time}]{date\+Of\+Birth}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Inicjalizuje nową instancję klasy \doxylink{class_console_app1_1_1_person}{Person}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em first\+Name} & Imię osoby.\\
+\hline
+{\em last\+Name} & Nazwisko osoby.\\
+\hline
+{\em pesel} & 11-\/cyfrowy numer PESEL.\\
+\hline
+{\em tel\+Number} & Numer telefonu w formacie XXX-\/\+XXX-\/\+XXX.\\
+\hline
+{\em date\+Of\+Birth} & Data urodzenia.\\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-property-members}
+\Hypertarget{class_console_app1_1_1_person_doc-property-members}
+\doxysubsection{Property Documentation}
+\Hypertarget{class_console_app1_1_1_person_a8bfe6d22e03214006194a2e912abac6a}\index{ConsoleApp1.Person@{ConsoleApp1.Person}!Pesel@{Pesel}}
+\index{Pesel@{Pesel}!ConsoleApp1.Person@{ConsoleApp1.Person}}
+\doxysubsubsection{\texorpdfstring{Pesel}{Pesel}}
+{\footnotesize\ttfamily \label{class_console_app1_1_1_person_a8bfe6d22e03214006194a2e912abac6a} 
+string Console\+App1.\+Person.\+Pesel\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Numer PESEL. Walidowany pod kątem posiadania dokładnie 11 cyfr. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Argument\+Exception} & Rzucany, gdy format PESEL jest nieprawidłowy.\\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_console_app1_1_1_person_a0457a160319171d05599a7da666b96db}\index{ConsoleApp1.Person@{ConsoleApp1.Person}!TelNumber@{TelNumber}}
+\index{TelNumber@{TelNumber}!ConsoleApp1.Person@{ConsoleApp1.Person}}
+\doxysubsubsection{\texorpdfstring{TelNumber}{TelNumber}}
+{\footnotesize\ttfamily \label{class_console_app1_1_1_person_a0457a160319171d05599a7da666b96db} 
+string Console\+App1.\+Person.\+Tel\+Number\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Numer telefonu. Walidowany pod kątem formatu XXX-\/\+XXX-\/\+XXX. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Argument\+Exception} & Rzucany, gdy format numeru jest nieprawidłowy.\\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+Console\+App1/\+Person.\+cs\end{DoxyCompactItemize}

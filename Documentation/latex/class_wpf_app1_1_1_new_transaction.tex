@@ -1,0 +1,122 @@
+\doxysection{Wpf\+App1.\+New\+Transaction Class Reference}
+\hypertarget{class_wpf_app1_1_1_new_transaction}{}\label{class_wpf_app1_1_1_new_transaction}\index{WpfApp1.NewTransaction@{WpfApp1.NewTransaction}}
+
+
+Logika interakcji dla okna New\+Transaction.\+xaml. Okno umożliwia użytkownikowi realizację przelewów, depozytów oraz wypłat.  
+
+
+Inheritance diagram for Wpf\+App1.\+New\+Transaction:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=0.772414cm]{class_wpf_app1_1_1_new_transaction}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_wpf_app1_1_1_new_transaction_ae1b2fcc717ff8761fd6bce94428fda54}{New\+Transaction}} (\doxymbox{\hyperlink{class_console_app1_1_1_customer}{Customer}} customer)
+\begin{DoxyCompactList}\small\item\em Inicjalizuje nową instancję klasy \doxylink{class_wpf_app1_1_1_new_transaction}{New\+Transaction}. Konfiguruje interfejs użytkownika, wyświetla saldo i wypełnia listę typów transakcji opisami z enum. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_wpf_app1_1_1_new_transaction_aa53beec45b7ba644dab64bb67acc921e}{Click\+\_\+\+Back}} (object sender, Routed\+Event\+Args e)
+\begin{DoxyCompactList}\small\item\em Obsługuje zdarzenie kliknięcia przycisku powrotu. Powraca do panelu klienta (\doxylink{class_wpf_app1_1_1_customer2_window}{Customer2\+Window}). \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_wpf_app1_1_1_new_transaction_a1b6d063980fbbb7d4ccb99deb54bdb2c}{Click\+\_\+\+Add\+Transaction}} (object sender, Routed\+Event\+Args e)
+\begin{DoxyCompactList}\small\item\em Obsługuje logikę zatwierdzania nowej transakcji. Waliduje typ operacji, numer konta odbiorcy oraz kwotę, a następnie zapisuje zmiany w bazie danych. \end{DoxyCompactList}\item 
+\Hypertarget{class_wpf_app1_1_1_new_transaction_a0d6515cdca2620e465d7ede43031c006}\label{class_wpf_app1_1_1_new_transaction_a0d6515cdca2620e465d7ede43031c006} 
+void {\bfseries Initialize\+Component} ()
+\begin{DoxyCompactList}\small\item\em Initialize\+Component. \end{DoxyCompactList}\item 
+\Hypertarget{class_wpf_app1_1_1_new_transaction_a0d6515cdca2620e465d7ede43031c006}\label{class_wpf_app1_1_1_new_transaction_a0d6515cdca2620e465d7ede43031c006} 
+void {\bfseries Initialize\+Component} ()
+\begin{DoxyCompactList}\small\item\em Initialize\+Component. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static string \doxymbox{\hyperlink{class_wpf_app1_1_1_new_transaction_a0d5d5d764f327f41b22461b30ed40b4f}{Get\+Enum\+Description}} (Enum value)
+\begin{DoxyCompactList}\small\item\em Pobiera wartość atrybutu Description\+Attribute dla podanej wartości wyliczeniowej (enum). Jeśli atrybut nie istnieje, zwraca nazwę tekstową elementu enum. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Logika interakcji dla okna New\+Transaction.\+xaml. Okno umożliwia użytkownikowi realizację przelewów, depozytów oraz wypłat. 
+
+\doxylink{class_wpf_app1_1_1_new_transaction}{New\+Transaction}. 
+
+\label{doc-constructors}
+\Hypertarget{class_wpf_app1_1_1_new_transaction_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_wpf_app1_1_1_new_transaction_ae1b2fcc717ff8761fd6bce94428fda54}\index{WpfApp1.NewTransaction@{WpfApp1.NewTransaction}!NewTransaction@{NewTransaction}}
+\index{NewTransaction@{NewTransaction}!WpfApp1.NewTransaction@{WpfApp1.NewTransaction}}
+\doxysubsubsection{\texorpdfstring{NewTransaction()}{NewTransaction()}}
+{\footnotesize\ttfamily \label{class_wpf_app1_1_1_new_transaction_ae1b2fcc717ff8761fd6bce94428fda54} 
+Wpf\+App1.\+New\+Transaction.\+New\+Transaction (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_console_app1_1_1_customer}{Customer}}}]{customer}{}\end{DoxyParamCaption})}
+
+
+
+Inicjalizuje nową instancję klasy \doxylink{class_wpf_app1_1_1_new_transaction}{New\+Transaction}. Konfiguruje interfejs użytkownika, wyświetla saldo i wypełnia listę typów transakcji opisami z enum. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em customer} & Obiekt klienta wykonującego transakcję.\\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_wpf_app1_1_1_new_transaction_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_wpf_app1_1_1_new_transaction_a1b6d063980fbbb7d4ccb99deb54bdb2c}\index{WpfApp1.NewTransaction@{WpfApp1.NewTransaction}!Click\_AddTransaction@{Click\_AddTransaction}}
+\index{Click\_AddTransaction@{Click\_AddTransaction}!WpfApp1.NewTransaction@{WpfApp1.NewTransaction}}
+\doxysubsubsection{\texorpdfstring{Click\_AddTransaction()}{Click\_AddTransaction()}}
+{\footnotesize\ttfamily \label{class_wpf_app1_1_1_new_transaction_a1b6d063980fbbb7d4ccb99deb54bdb2c} 
+void Wpf\+App1.\+New\+Transaction.\+Click\+\_\+\+Add\+Transaction (\begin{DoxyParamCaption}\item[{object}]{sender}{, }\item[{Routed\+Event\+Args}]{e}{}\end{DoxyParamCaption})}
+
+
+
+Obsługuje logikę zatwierdzania nowej transakcji. Waliduje typ operacji, numer konta odbiorcy oraz kwotę, a następnie zapisuje zmiany w bazie danych. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sender} & Obiekt wywołujący zdarzenie.\\
+\hline
+{\em e} & Argumenty zdarzenia.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_wpf_app1_1_1_new_transaction_aa53beec45b7ba644dab64bb67acc921e}\index{WpfApp1.NewTransaction@{WpfApp1.NewTransaction}!Click\_Back@{Click\_Back}}
+\index{Click\_Back@{Click\_Back}!WpfApp1.NewTransaction@{WpfApp1.NewTransaction}}
+\doxysubsubsection{\texorpdfstring{Click\_Back()}{Click\_Back()}}
+{\footnotesize\ttfamily \label{class_wpf_app1_1_1_new_transaction_aa53beec45b7ba644dab64bb67acc921e} 
+void Wpf\+App1.\+New\+Transaction.\+Click\+\_\+\+Back (\begin{DoxyParamCaption}\item[{object}]{sender}{, }\item[{Routed\+Event\+Args}]{e}{}\end{DoxyParamCaption})}
+
+
+
+Obsługuje zdarzenie kliknięcia przycisku powrotu. Powraca do panelu klienta (\doxylink{class_wpf_app1_1_1_customer2_window}{Customer2\+Window}). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sender} & Obiekt wywołujący zdarzenie.\\
+\hline
+{\em e} & Argumenty zdarzenia.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_wpf_app1_1_1_new_transaction_a0d5d5d764f327f41b22461b30ed40b4f}\index{WpfApp1.NewTransaction@{WpfApp1.NewTransaction}!GetEnumDescription@{GetEnumDescription}}
+\index{GetEnumDescription@{GetEnumDescription}!WpfApp1.NewTransaction@{WpfApp1.NewTransaction}}
+\doxysubsubsection{\texorpdfstring{GetEnumDescription()}{GetEnumDescription()}}
+{\footnotesize\ttfamily \label{class_wpf_app1_1_1_new_transaction_a0d5d5d764f327f41b22461b30ed40b4f} 
+string Wpf\+App1.\+New\+Transaction.\+Get\+Enum\+Description (\begin{DoxyParamCaption}\item[{Enum}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Pobiera wartość atrybutu Description\+Attribute dla podanej wartości wyliczeniowej (enum). Jeśli atrybut nie istnieje, zwraca nazwę tekstową elementu enum. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & Wartość enum, dla której szukany jest opis.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Tekstowy opis elementu enum lub jego nazwa.
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+Wpf\+App1/\+New\+Transaction.\+xaml.\+cs\item 
+Wpf\+App1/\+obj/\+\+Debug/\+net8.\+0-\/windows/\+New\+Transaction.\+g.\+cs\item 
+Wpf\+App1/\+obj/\+\+Debug/\+net8.\+0-\/windows/\+New\+Transaction.\+g.\+i.\+cs\end{DoxyCompactItemize}

@@ -1,0 +1,88 @@
+\doxysection{Console\+App1.\+Transaction Class Reference}
+\hypertarget{class_console_app1_1_1_transaction}{}\label{class_console_app1_1_1_transaction}\index{ConsoleApp1.Transaction@{ConsoleApp1.Transaction}}
+
+
+Klasa reprezentująca pojedynczą operację finansową.  
+
+
+Inheritance diagram for Console\+App1.\+Transaction:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_console_app1_1_1_transaction}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_console_app1_1_1_transaction_a72474e51f79d107d2a88de1428b4e026}{Transaction}} (decimal amount, \doxymbox{\hyperlink{namespace_console_app1_a01e9654cb192f0472479a1fa3c8f8be9}{Transaction\+Type}} type, \doxymbox{\hyperlink{class_console_app1_1_1_account}{Account}} account1)
+\begin{DoxyCompactList}\small\item\em Konstruktor dla depozytów i wypłat (transakcje jednoosobowe). \end{DoxyCompactList}\item 
+\Hypertarget{class_console_app1_1_1_transaction_aa2c70a7e91d790621079c9003faa3d73}\label{class_console_app1_1_1_transaction_aa2c70a7e91d790621079c9003faa3d73} 
+{\bfseries Transaction} (decimal amount, \doxymbox{\hyperlink{namespace_console_app1_a01e9654cb192f0472479a1fa3c8f8be9}{Transaction\+Type}} type, \doxymbox{\hyperlink{class_console_app1_1_1_account}{Account}} account1, \doxymbox{\hyperlink{class_console_app1_1_1_account}{Account}} account2)
+\begin{DoxyCompactList}\small\item\em Konstruktor dla przelewów między dwoma kontami. \end{DoxyCompactList}\item 
+\Hypertarget{class_console_app1_1_1_transaction_ac2092a0a7c946142e892a090dc2002f8}\label{class_console_app1_1_1_transaction_ac2092a0a7c946142e892a090dc2002f8} 
+object {\bfseries Clone} ()
+\begin{DoxyCompactList}\small\item\em Zwraca sklonowany obiekt. \end{DoxyCompactList}\item 
+\Hypertarget{class_console_app1_1_1_transaction_a2d198af375c5216a83980a978d0798e5}\label{class_console_app1_1_1_transaction_a2d198af375c5216a83980a978d0798e5} 
+void {\bfseries Save\+To\+JSON} ()
+\begin{DoxyCompactList}\small\item\em Zapisuje dane transakcji do pliku JSON. \end{DoxyCompactList}\item 
+\Hypertarget{class_console_app1_1_1_transaction_afe03f89bf98b4de980df6e65acc7e5c3}\label{class_console_app1_1_1_transaction_afe03f89bf98b4de980df6e65acc7e5c3} 
+override string {\bfseries To\+String} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_console_app1_1_1_transaction_a1a26d9152d73432701b748344573cd24}\label{class_console_app1_1_1_transaction_a1a26d9152d73432701b748344573cd24} 
+static \doxymbox{\hyperlink{class_console_app1_1_1_transaction_a72474e51f79d107d2a88de1428b4e026}{Transaction}} {\bfseries Load\+From\+JSON} (string file\+Name)
+\begin{DoxyCompactList}\small\item\em Wczytuje dane transakcji z pliku JSON. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_console_app1_1_1_transaction_a4376c01052e4bdb6e0e8bc679b41d7d7}\label{class_console_app1_1_1_transaction_a4376c01052e4bdb6e0e8bc679b41d7d7} 
+Guid {\bfseries Transaction\+ID}\hspace{0.3cm}{\ttfamily  \+[get]\+}
+\begin{DoxyCompactList}\small\item\em Unikalny identyfikator transakcji. \end{DoxyCompactList}\item 
+\Hypertarget{class_console_app1_1_1_transaction_a9d5614e3b1ee5bfdb785134d50157f8e}\label{class_console_app1_1_1_transaction_a9d5614e3b1ee5bfdb785134d50157f8e} 
+decimal {\bfseries Amount}\hspace{0.3cm}{\ttfamily  \+[get, set]\+}
+\item 
+\Hypertarget{class_console_app1_1_1_transaction_ae87062a5cb7eec151af8d1a777b672f3}\label{class_console_app1_1_1_transaction_ae87062a5cb7eec151af8d1a777b672f3} 
+\doxymbox{\hyperlink{namespace_console_app1_a01e9654cb192f0472479a1fa3c8f8be9}{Transaction\+Type}} {\bfseries Type}\hspace{0.3cm}{\ttfamily  \+[get, set]\+}
+\item 
+\Hypertarget{class_console_app1_1_1_transaction_ad4dca091fcf14a307df4d341cc5f67a7}\label{class_console_app1_1_1_transaction_ad4dca091fcf14a307df4d341cc5f67a7} 
+\doxymbox{\hyperlink{class_console_app1_1_1_account}{Account}} {\bfseries Sender}\hspace{0.3cm}{\ttfamily  \+[get, set]\+}
+\item 
+\Hypertarget{class_console_app1_1_1_transaction_a78219943bc59a44c76c7d9a9ddcf3a7c}\label{class_console_app1_1_1_transaction_a78219943bc59a44c76c7d9a9ddcf3a7c} 
+\doxymbox{\hyperlink{class_console_app1_1_1_account}{Account}} {\bfseries Recipient}\hspace{0.3cm}{\ttfamily  \+[get, set]\+}
+\item 
+\Hypertarget{class_console_app1_1_1_transaction_abe20658401a47e6ce9b7d4faa322b81e}\label{class_console_app1_1_1_transaction_abe20658401a47e6ce9b7d4faa322b81e} 
+string {\bfseries Senders\+Pesel}\hspace{0.3cm}{\ttfamily  \+[get, set]\+}
+\item 
+\Hypertarget{class_console_app1_1_1_transaction_ac531e2acbf047010f4b0459eaaf5d7f4}\label{class_console_app1_1_1_transaction_ac531e2acbf047010f4b0459eaaf5d7f4} 
+string {\bfseries Recipients\+Pesel}\hspace{0.3cm}{\ttfamily  \+[get, set]\+}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Klasa reprezentująca pojedynczą operację finansową. 
+
+\label{doc-constructors}
+\Hypertarget{class_console_app1_1_1_transaction_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_console_app1_1_1_transaction_a72474e51f79d107d2a88de1428b4e026}\index{ConsoleApp1.Transaction@{ConsoleApp1.Transaction}!Transaction@{Transaction}}
+\index{Transaction@{Transaction}!ConsoleApp1.Transaction@{ConsoleApp1.Transaction}}
+\doxysubsubsection{\texorpdfstring{Transaction()}{Transaction()}}
+{\footnotesize\ttfamily \label{class_console_app1_1_1_transaction_a72474e51f79d107d2a88de1428b4e026} 
+Console\+App1.\+Transaction.\+Transaction (\begin{DoxyParamCaption}\item[{decimal}]{amount}{, }\item[{\doxymbox{\hyperlink{namespace_console_app1_a01e9654cb192f0472479a1fa3c8f8be9}{Transaction\+Type}}}]{type}{, }\item[{\doxymbox{\hyperlink{class_console_app1_1_1_account}{Account}}}]{account1}{}\end{DoxyParamCaption})}
+
+
+
+Konstruktor dla depozytów i wypłat (transakcje jednoosobowe). 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{class_console_app1_1_1_transaction_type_exception}{Transaction\+Type\+Exception}} & Gdy typ to Transfer (wymaga dwóch kont).\\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+Console\+App1/\+Transaction.\+cs\end{DoxyCompactItemize}

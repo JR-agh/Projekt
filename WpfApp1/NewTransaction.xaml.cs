@@ -18,11 +18,25 @@ using System.Windows.Shapes;
 
 namespace WpfApp1 {
     /// <summary>
-    /// Interaction logic for NewTransaction.xaml
+    /// Logika interakcji dla okna NewTransaction.xaml.
+    /// Okno umożliwia użytkownikowi realizację przelewów, depozytów oraz wypłat.
     /// </summary>
     public partial class NewTransaction : Window {
+        /// <summary>
+        /// Klient inicjujący transakcję.
+        /// </summary>
         Customer customer;
+
+        /// <summary>
+        /// Konto powiązane z klientem, z którego lub na które dokonywana jest operacja.
+        /// </summary>
         Account account;
+
+        /// <summary>
+        /// Inicjalizuje nową instancję klasy <see cref="NewTransaction"/>.
+        /// Konfiguruje interfejs użytkownika, wyświetla saldo i wypełnia listę typów transakcji opisami z enum.
+        /// </summary>
+        /// <param name="customer">Obiekt klienta wykonującego transakcję.</param>
         public NewTransaction(Customer customer) {
             InitializeComponent();
             this.customer = customer;
@@ -37,16 +51,31 @@ namespace WpfApp1 {
             CmbTransferType.DisplayMemberPath = "Description";
             CmbTransferType.SelectedValuePath = "Value";
         }
+
+        /// <summary>
+        /// Obsługuje zdarzenie kliknięcia przycisku powrotu.
+        /// Powraca do panelu klienta (<see cref="Customer2Window"/>).
+        /// </summary>
+        /// <param name="sender">Obiekt wywołujący zdarzenie.</param>
+        /// <param name="e">Argumenty zdarzenia.</param>
         public void Click_Back(object sender, RoutedEventArgs e) {
             Customer2Window nWn = new(this.customer);
             nWn.Show();
             this.Close();
         }
+
+        /// <summary>
+        /// Obsługuje logikę zatwierdzania nowej transakcji.
+        /// Waliduje typ operacji, numer konta odbiorcy oraz kwotę, a następnie zapisuje zmiany w bazie danych.
+        /// </summary>
+        /// <param name="sender">Obiekt wywołujący zdarzenie.</param>
+        /// <param name="e">Argumenty zdarzenia.</param>
         public void Click_AddTransaction(object sender, RoutedEventArgs e) {
             if (CmbTransferType.SelectedItem == null) {
                 MessageBox.Show("Wybierz typ operacji.");
                 return;
             }
+
             using (var db = new ProjectDbContext()) {
                 var acc = db.Accounts.Find(account.OwnersPesel);
                 var acc2 = db.Accounts.FirstOrDefault(a => a.AccountNumber == this.TxtAcc2Nmb.Text);
@@ -54,6 +83,7 @@ namespace WpfApp1 {
                     MessageBox.Show("Zły numer konta odbiorcy.");
                     return;
                 }
+
                 decimal amount;
                 try {
                     amount = decimal.Parse(this.TxtAmount.Text, CultureInfo.InvariantCulture);
@@ -79,6 +109,7 @@ namespace WpfApp1 {
                     case TransactionType.Withdrawal:
                         Transaction transaction3 = new(amount, TransactionType.Withdrawal, acc);
                         acc.ProccessTransaction(transaction3);
+                        db.Transactions.Add(transaction3);
                         MessageBox.Show("Udana wypłata.");
                         break;
                 }
@@ -88,6 +119,13 @@ namespace WpfApp1 {
             nWn.Show();
             this.Close();
         }
+
+        /// <summary>
+        /// Pobiera wartość atrybutu <see cref="DescriptionAttribute"/> dla podanej wartości wyliczeniowej (enum).
+        /// Jeśli atrybut nie istnieje, zwraca nazwę tekstową elementu enum.
+        /// </summary>
+        /// <param name="value">Wartość enum, dla której szukany jest opis.</param>
+        /// <returns>Tekstowy opis elementu enum lub jego nazwa.</returns>
         public static string GetEnumDescription(Enum value) {
             FieldInfo fi = value.GetType().GetField(value.ToString());
             DescriptionAttribute[] attributes = (DescriptionAttribute[])fi.GetCustomAttributes(typeof(DescriptionAttribute), false);

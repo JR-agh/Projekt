@@ -1,0 +1,118 @@
+\doxysection{Wpf\+App1.\+Supervisor\+Window Class Reference}
+\hypertarget{class_wpf_app1_1_1_supervisor_window}{}\label{class_wpf_app1_1_1_supervisor_window}\index{WpfApp1.SupervisorWindow@{WpfApp1.SupervisorWindow}}
+
+
+\doxylink{class_wpf_app1_1_1_supervisor_window}{Supervisor\+Window}.  
+
+
+Inheritance diagram for Wpf\+App1.\+Supervisor\+Window:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=0.772414cm]{class_wpf_app1_1_1_supervisor_window}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_wpf_app1_1_1_supervisor_window_af5b79c0149142b9fdc5b106338b124f2}\label{class_wpf_app1_1_1_supervisor_window_af5b79c0149142b9fdc5b106338b124f2} 
+void {\bfseries Initialize\+Component} ()
+\begin{DoxyCompactList}\small\item\em Initialize\+Component. \end{DoxyCompactList}\item 
+\Hypertarget{class_wpf_app1_1_1_supervisor_window_af5b79c0149142b9fdc5b106338b124f2}\label{class_wpf_app1_1_1_supervisor_window_af5b79c0149142b9fdc5b106338b124f2} 
+void {\bfseries Initialize\+Component} ()
+\begin{DoxyCompactList}\small\item\em Initialize\+Component. \end{DoxyCompactList}\item 
+\Hypertarget{class_wpf_app1_1_1_supervisor_window_a5768056dea18be7263e7c6fd7991f1ad}\label{class_wpf_app1_1_1_supervisor_window_a5768056dea18be7263e7c6fd7991f1ad} 
+{\bfseries Supervisor\+Window} ()
+\begin{DoxyCompactList}\small\item\em Inicjalizuje nową instancję klasy \doxylink{class_wpf_app1_1_1_supervisor_window}{Supervisor\+Window}. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_wpf_app1_1_1_supervisor_window_a6976cd49718808a7ccdcb318e579ebed}{Click\+\_\+\+Back\+To\+Menu}} (object sender, Routed\+Event\+Args e)
+\begin{DoxyCompactList}\small\item\em Obsługuje zdarzenie kliknięcia przycisku powrotu. Zamyka okno administratora i powraca do menu głównego aplikacji (\doxylink{class_wpf_app1_1_1_main_window}{Main\+Window}). \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_wpf_app1_1_1_supervisor_window_af88d258422476e4730b9d0434600670d}{Click\+\_\+\+Show\+Customers}} (object sender, Routed\+Event\+Args e)
+\begin{DoxyCompactList}\small\item\em Pobiera z bazy danych listę wszystkich zarejestrowanych klientów (\doxylink{class_console_app1_1_1_customer}{Customer}) i wyświetla ich dane w formie tekstowej w oknie komunikatu. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_wpf_app1_1_1_supervisor_window_a0cfd08b8e686dab711a95b65337eb09a}{Click\+\_\+\+Show\+Employees}} (object sender, Routed\+Event\+Args e)
+\begin{DoxyCompactList}\small\item\em Pobiera z bazy danych listę wszystkich pracowników (\doxylink{class_console_app1_1_1_employee}{Employee}) i wyświetla ich dane osobowe w oknie komunikatu. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_wpf_app1_1_1_supervisor_window_a5e61382cc74bedef64b3cf4ccedecd92}{Click\+\_\+\+Add\+Employee}} (object sender, Routed\+Event\+Args e)
+\begin{DoxyCompactList}\small\item\em Otwiera formularz dodawania nowej osoby, skonfigurowany specjalnie do rejestracji pracownika. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_wpf_app1_1_1_supervisor_window}{Supervisor\+Window}. 
+
+Logika interakcji dla okna Supervisor\+Window.\+xaml. Okno stanowi panel administracyjny (Przełożonego), umożliwiający całościowy wgląd w bazę klientów i pracowników oraz dodawanie nowego personelu do systemu. 
+
+\label{doc-func-members}
+\Hypertarget{class_wpf_app1_1_1_supervisor_window_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_wpf_app1_1_1_supervisor_window_a5e61382cc74bedef64b3cf4ccedecd92}\index{WpfApp1.SupervisorWindow@{WpfApp1.SupervisorWindow}!Click\_AddEmployee@{Click\_AddEmployee}}
+\index{Click\_AddEmployee@{Click\_AddEmployee}!WpfApp1.SupervisorWindow@{WpfApp1.SupervisorWindow}}
+\doxysubsubsection{\texorpdfstring{Click\_AddEmployee()}{Click\_AddEmployee()}}
+{\footnotesize\ttfamily \label{class_wpf_app1_1_1_supervisor_window_a5e61382cc74bedef64b3cf4ccedecd92} 
+void Wpf\+App1.\+Supervisor\+Window.\+Click\+\_\+\+Add\+Employee (\begin{DoxyParamCaption}\item[{object}]{sender}{, }\item[{Routed\+Event\+Args}]{e}{}\end{DoxyParamCaption})}
+
+
+
+Otwiera formularz dodawania nowej osoby, skonfigurowany specjalnie do rejestracji pracownika. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sender} & Obiekt wywołujący zdarzenie.\\
+\hline
+{\em e} & Argumenty zdarzenia.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_wpf_app1_1_1_supervisor_window_a6976cd49718808a7ccdcb318e579ebed}\index{WpfApp1.SupervisorWindow@{WpfApp1.SupervisorWindow}!Click\_BackToMenu@{Click\_BackToMenu}}
+\index{Click\_BackToMenu@{Click\_BackToMenu}!WpfApp1.SupervisorWindow@{WpfApp1.SupervisorWindow}}
+\doxysubsubsection{\texorpdfstring{Click\_BackToMenu()}{Click\_BackToMenu()}}
+{\footnotesize\ttfamily \label{class_wpf_app1_1_1_supervisor_window_a6976cd49718808a7ccdcb318e579ebed} 
+void Wpf\+App1.\+Supervisor\+Window.\+Click\+\_\+\+Back\+To\+Menu (\begin{DoxyParamCaption}\item[{object}]{sender}{, }\item[{Routed\+Event\+Args}]{e}{}\end{DoxyParamCaption})}
+
+
+
+Obsługuje zdarzenie kliknięcia przycisku powrotu. Zamyka okno administratora i powraca do menu głównego aplikacji (\doxylink{class_wpf_app1_1_1_main_window}{Main\+Window}). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sender} & Obiekt wywołujący zdarzenie.\\
+\hline
+{\em e} & Argumenty zdarzenia.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_wpf_app1_1_1_supervisor_window_af88d258422476e4730b9d0434600670d}\index{WpfApp1.SupervisorWindow@{WpfApp1.SupervisorWindow}!Click\_ShowCustomers@{Click\_ShowCustomers}}
+\index{Click\_ShowCustomers@{Click\_ShowCustomers}!WpfApp1.SupervisorWindow@{WpfApp1.SupervisorWindow}}
+\doxysubsubsection{\texorpdfstring{Click\_ShowCustomers()}{Click\_ShowCustomers()}}
+{\footnotesize\ttfamily \label{class_wpf_app1_1_1_supervisor_window_af88d258422476e4730b9d0434600670d} 
+void Wpf\+App1.\+Supervisor\+Window.\+Click\+\_\+\+Show\+Customers (\begin{DoxyParamCaption}\item[{object}]{sender}{, }\item[{Routed\+Event\+Args}]{e}{}\end{DoxyParamCaption})}
+
+
+
+Pobiera z bazy danych listę wszystkich zarejestrowanych klientów (\doxylink{class_console_app1_1_1_customer}{Customer}) i wyświetla ich dane w formie tekstowej w oknie komunikatu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sender} & Obiekt wywołujący zdarzenie.\\
+\hline
+{\em e} & Argumenty zdarzenia.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_wpf_app1_1_1_supervisor_window_a0cfd08b8e686dab711a95b65337eb09a}\index{WpfApp1.SupervisorWindow@{WpfApp1.SupervisorWindow}!Click\_ShowEmployees@{Click\_ShowEmployees}}
+\index{Click\_ShowEmployees@{Click\_ShowEmployees}!WpfApp1.SupervisorWindow@{WpfApp1.SupervisorWindow}}
+\doxysubsubsection{\texorpdfstring{Click\_ShowEmployees()}{Click\_ShowEmployees()}}
+{\footnotesize\ttfamily \label{class_wpf_app1_1_1_supervisor_window_a0cfd08b8e686dab711a95b65337eb09a} 
+void Wpf\+App1.\+Supervisor\+Window.\+Click\+\_\+\+Show\+Employees (\begin{DoxyParamCaption}\item[{object}]{sender}{, }\item[{Routed\+Event\+Args}]{e}{}\end{DoxyParamCaption})}
+
+
+
+Pobiera z bazy danych listę wszystkich pracowników (\doxylink{class_console_app1_1_1_employee}{Employee}) i wyświetla ich dane osobowe w oknie komunikatu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sender} & Obiekt wywołujący zdarzenie.\\
+\hline
+{\em e} & Argumenty zdarzenia.\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+Wpf\+App1/\+obj/\+\+Debug/\+net8.\+0-\/windows/\+Supervisor\+Window.\+g.\+cs\item 
+Wpf\+App1/\+obj/\+\+Debug/\+net8.\+0-\/windows/\+Supervisor\+Window.\+g.\+i.\+cs\item 
+Wpf\+App1/\+Supervisor\+Window.\+xaml.\+cs\end{DoxyCompactItemize}

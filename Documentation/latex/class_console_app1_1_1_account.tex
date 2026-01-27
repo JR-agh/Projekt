@@ -1,0 +1,127 @@
+\doxysection{Console\+App1.\+Account Class Reference}
+\hypertarget{class_console_app1_1_1_account}{}\label{class_console_app1_1_1_account}\index{ConsoleApp1.Account@{ConsoleApp1.Account}}
+
+
+Reprezentuje konto bankowe z obsługą blokad, transakcji i doradcy.  
+
+
+Inheritance diagram for Console\+App1.\+Account:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_console_app1_1_1_account}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_console_app1_1_1_account_a6ebf7878cdf537a4bd80e69538716933}\label{class_console_app1_1_1_account_a6ebf7878cdf537a4bd80e69538716933} 
+{\bfseries Account} (\doxymbox{\hyperlink{class_console_app1_1_1_customer}{Customer}} owner)
+\item 
+\Hypertarget{class_console_app1_1_1_account_ace659dc7998726fb1049266c853310eb}\label{class_console_app1_1_1_account_ace659dc7998726fb1049266c853310eb} 
+{\bfseries Account} (\doxymbox{\hyperlink{class_console_app1_1_1_customer}{Customer}} owner, \doxymbox{\hyperlink{class_console_app1_1_1_employee}{Employee}} advisor)
+\item 
+\Hypertarget{class_console_app1_1_1_account_a42908936bc48e52e12347854c1eb4482}\label{class_console_app1_1_1_account_a42908936bc48e52e12347854c1eb4482} 
+void {\bfseries Add\+Advisor} (\doxymbox{\hyperlink{class_console_app1_1_1_employee}{Employee}} advisor)
+\begin{DoxyCompactList}\small\item\em Przypisuje doradcę do konta i aktualizuje listę kont doradcy. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_console_app1_1_1_account_aa374550ec47886934957292da4cb462a}{Remove\+Restricion}} ()
+\begin{DoxyCompactList}\small\item\em Zdejmuje restrykcję z konta i finalizuje wstrzymaną transakcję. \end{DoxyCompactList}\item 
+\Hypertarget{class_console_app1_1_1_account_a3ab178ee686d19d2bab3c14526c2e299}\label{class_console_app1_1_1_account_a3ab178ee686d19d2bab3c14526c2e299} 
+bool {\bfseries Proccess\+Transaction} (\doxymbox{\hyperlink{class_console_app1_1_1_transaction}{Transaction}} transaction)
+\begin{DoxyCompactList}\small\item\em Przeprowadza transakcję na koncie. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_console_app1_1_1_account_a7759e0d5f7d33c4cb622463e5d0cfe9b}{Check\+Transaction}} (\doxymbox{\hyperlink{class_console_app1_1_1_transaction}{Transaction}} transaction)
+\begin{DoxyCompactList}\small\item\em Sprawdza, czy transakcja wymaga weryfikacji (kwota \texorpdfstring{$>$}{>} 10000). \end{DoxyCompactList}\item 
+\Hypertarget{class_console_app1_1_1_account_a82bb77ca6fb82c8742743a8bf0479a94}\label{class_console_app1_1_1_account_a82bb77ca6fb82c8742743a8bf0479a94} 
+void {\bfseries Book\+Transaction} (\doxymbox{\hyperlink{class_console_app1_1_1_transaction}{Transaction}} transaction)
+\begin{DoxyCompactList}\small\item\em Aktualizuje saldo konta na podstawie typu transakcji. \end{DoxyCompactList}\item 
+\Hypertarget{class_console_app1_1_1_account_a94d6f70320013d6d78115f98333ef19f}\label{class_console_app1_1_1_account_a94d6f70320013d6d78115f98333ef19f} 
+int {\bfseries Compare\+To} (object? obj)
+\item 
+\Hypertarget{class_console_app1_1_1_account_a3444ee0d4f1182aa01eff70ef1bf84a1}\label{class_console_app1_1_1_account_a3444ee0d4f1182aa01eff70ef1bf84a1} 
+bool {\bfseries Equals} (Account? other)
+\item 
+\Hypertarget{class_console_app1_1_1_account_a70ae883d2fafb1264c65831184d6e248}\label{class_console_app1_1_1_account_a70ae883d2fafb1264c65831184d6e248} 
+int {\bfseries Compare} (Account? x, Account? y)
+\item 
+\Hypertarget{class_console_app1_1_1_account_a315be722848dc020d97f13cfb5c87361}\label{class_console_app1_1_1_account_a315be722848dc020d97f13cfb5c87361} 
+void {\bfseries Save\+To\+JSON} ()
+\begin{DoxyCompactList}\small\item\em Zapisuje dane konta do pliku JSON. \end{DoxyCompactList}\item 
+\Hypertarget{class_console_app1_1_1_account_aaa1911b17ed3b9a5d6a97eb69dadf2c4}\label{class_console_app1_1_1_account_aaa1911b17ed3b9a5d6a97eb69dadf2c4} 
+override string {\bfseries To\+String} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_console_app1_1_1_account_a8dcd3db9b9897081da0f18aac79f121a}\label{class_console_app1_1_1_account_a8dcd3db9b9897081da0f18aac79f121a} 
+static Account {\bfseries Load\+From\+JSON} (string file\+Name)
+\begin{DoxyCompactList}\small\item\em Wczytuje dane konta z pliku JSON. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_console_app1_1_1_account_ae9639ba60b52d5e997bed643b2a056df}\label{class_console_app1_1_1_account_ae9639ba60b52d5e997bed643b2a056df} 
+bool {\bfseries Is\+Restricted}\hspace{0.3cm}{\ttfamily  \+[get, set]\+}
+\begin{DoxyCompactList}\small\item\em Czy konto jest zablokowane (np. z powodu dużej kwoty transakcji). \end{DoxyCompactList}\item 
+\Hypertarget{class_console_app1_1_1_account_acfcef53d3af03fc7fd615f03545f00bc}\label{class_console_app1_1_1_account_acfcef53d3af03fc7fd615f03545f00bc} 
+\doxymbox{\hyperlink{class_console_app1_1_1_employee}{Employee}} {\bfseries Advisor}\hspace{0.3cm}{\ttfamily  \+[get, set]\+}
+\item 
+\Hypertarget{class_console_app1_1_1_account_a7e2a29535fc55ca446a28fdb9d065468}\label{class_console_app1_1_1_account_a7e2a29535fc55ca446a28fdb9d065468} 
+\doxymbox{\hyperlink{class_console_app1_1_1_customer}{Customer}} {\bfseries Owner}\hspace{0.3cm}{\ttfamily  \+[get, set]\+}
+\item 
+\Hypertarget{class_console_app1_1_1_account_acf0c3f4bb7304d63531e3418faf1d8f4}\label{class_console_app1_1_1_account_acf0c3f4bb7304d63531e3418faf1d8f4} 
+decimal {\bfseries Balance}\hspace{0.3cm}{\ttfamily  \+[get, set]\+}
+\begin{DoxyCompactList}\small\item\em Saldo konta. \end{DoxyCompactList}\item 
+\Hypertarget{class_console_app1_1_1_account_ad7e8285ee26e248b085ee958f80c3f11}\label{class_console_app1_1_1_account_ad7e8285ee26e248b085ee958f80c3f11} 
+string {\bfseries Account\+Number}\hspace{0.3cm}{\ttfamily  \+[get, set]\+}
+\item 
+\Hypertarget{class_console_app1_1_1_account_a2ff366d02627961e11084fc4e79719ce}\label{class_console_app1_1_1_account_a2ff366d02627961e11084fc4e79719ce} 
+\doxymbox{\hyperlink{class_console_app1_1_1_transaction}{Transaction}}? {\bfseries Transaction\+On\+Hold}\hspace{0.3cm}{\ttfamily  \+[get, set]\+}
+\item 
+\Hypertarget{class_console_app1_1_1_account_a86bdf4453db9a4201c9fc1642d0acc02}\label{class_console_app1_1_1_account_a86bdf4453db9a4201c9fc1642d0acc02} 
+string {\bfseries Owners\+Pesel}\hspace{0.3cm}{\ttfamily  \+[get, set]\+}
+\begin{DoxyCompactList}\small\item\em Przypisany numer PESEL właściciela (Klucz podstawowy dla DB). \end{DoxyCompactList}\item 
+\Hypertarget{class_console_app1_1_1_account_a469d9f85075e11ca78277f78cea8b73b}\label{class_console_app1_1_1_account_a469d9f85075e11ca78277f78cea8b73b} 
+List$<$ \doxymbox{\hyperlink{class_console_app1_1_1_transaction}{Transaction}} $>$ {\bfseries Sent\+Transactions}\hspace{0.3cm}{\ttfamily  \+[get, set]\+}
+\item 
+\Hypertarget{class_console_app1_1_1_account_acfeb201fac184178b9fd9b52cfa1e0ac}\label{class_console_app1_1_1_account_acfeb201fac184178b9fd9b52cfa1e0ac} 
+List$<$ \doxymbox{\hyperlink{class_console_app1_1_1_transaction}{Transaction}} $>$ {\bfseries Received\+Transactions}\hspace{0.3cm}{\ttfamily  \+[get, set]\+}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Reprezentuje konto bankowe z obsługą blokad, transakcji i doradcy. 
+
+\label{doc-func-members}
+\Hypertarget{class_console_app1_1_1_account_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_console_app1_1_1_account_a7759e0d5f7d33c4cb622463e5d0cfe9b}\index{ConsoleApp1.Account@{ConsoleApp1.Account}!CheckTransaction@{CheckTransaction}}
+\index{CheckTransaction@{CheckTransaction}!ConsoleApp1.Account@{ConsoleApp1.Account}}
+\doxysubsubsection{\texorpdfstring{CheckTransaction()}{CheckTransaction()}}
+{\footnotesize\ttfamily \label{class_console_app1_1_1_account_a7759e0d5f7d33c4cb622463e5d0cfe9b} 
+bool Console\+App1.\+Account.\+Check\+Transaction (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_console_app1_1_1_transaction}{Transaction}}}]{transaction}{}\end{DoxyParamCaption})}
+
+
+
+Sprawdza, czy transakcja wymaga weryfikacji (kwota \texorpdfstring{$>$}{>} 10000). 
+
+\begin{DoxyReturn}{Returns}
+True, jeśli transakcja może być procesowana natychmiast.
+\end{DoxyReturn}
+\Hypertarget{class_console_app1_1_1_account_aa374550ec47886934957292da4cb462a}\index{ConsoleApp1.Account@{ConsoleApp1.Account}!RemoveRestricion@{RemoveRestricion}}
+\index{RemoveRestricion@{RemoveRestricion}!ConsoleApp1.Account@{ConsoleApp1.Account}}
+\doxysubsubsection{\texorpdfstring{RemoveRestricion()}{RemoveRestricion()}}
+{\footnotesize\ttfamily \label{class_console_app1_1_1_account_aa374550ec47886934957292da4cb462a} 
+void Console\+App1.\+Account.\+Remove\+Restricion (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Zdejmuje restrykcję z konta i finalizuje wstrzymaną transakcję. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & Rzucany, gdy nie ma transakcji do zatwierdzenia.\\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+Console\+App1/\+Account.\+cs\end{DoxyCompactItemize}

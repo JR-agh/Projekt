@@ -1,0 +1,102 @@
+\doxysection{Console\+App1.\+Customer Class Reference}
+\hypertarget{class_console_app1_1_1_customer}{}\label{class_console_app1_1_1_customer}\index{ConsoleApp1.Customer@{ConsoleApp1.Customer}}
+
+
+Reprezentuje klienta banku, który może posiadać konto osobiste.  
+
+
+Inheritance diagram for Console\+App1.\+Customer:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_console_app1_1_1_customer}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_console_app1_1_1_customer_acd3fa70fda439d785b1bdae791568f65}\label{class_console_app1_1_1_customer_acd3fa70fda439d785b1bdae791568f65} 
+{\bfseries Customer} (string first\+Name, string last\+Name, string pesel, string tel\+Number, Date\+Time date\+Of\+Birth)
+\item 
+void \doxymbox{\hyperlink{class_console_app1_1_1_customer_aaf674b118ea5519f0fed531fbdeb8203}{Assign\+Account}} (\doxymbox{\hyperlink{class_console_app1_1_1_account}{Account}} account)
+\begin{DoxyCompactList}\small\item\em Przypisuje konto do klienta. \end{DoxyCompactList}\item 
+\Hypertarget{class_console_app1_1_1_customer_a67a06209cb84fcce6eae814eb725fea8}\label{class_console_app1_1_1_customer_a67a06209cb84fcce6eae814eb725fea8} 
+override bool {\bfseries Equals} (\doxymbox{\hyperlink{class_console_app1_1_1_person_a03aa6b89164901feb13f78f92b355b56}{Person}}? other)
+\item 
+\Hypertarget{class_console_app1_1_1_customer_a32d17aaa34b87944137ff6b892880008}\label{class_console_app1_1_1_customer_a32d17aaa34b87944137ff6b892880008} 
+void {\bfseries Save\+To\+JSON} ()
+\begin{DoxyCompactList}\small\item\em Zapisuje dane klienta do pliku JSON o nazwie opartej na numerze PESEL. \end{DoxyCompactList}\item 
+\Hypertarget{class_console_app1_1_1_customer_a8254439c24667b263177ce75e16a7759}\label{class_console_app1_1_1_customer_a8254439c24667b263177ce75e16a7759} 
+override string {\bfseries To\+String} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{class_console_app1_1_1_person}{Console\+App1.\+Person}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void {\bfseries Display\+Personal\+Info} ()
+\begin{DoxyCompactList}\small\item\em Wyświetla podstawowe informacje o osobie w konsoli. \end{DoxyCompactList}\item 
+bool {\bfseries Equals} (\doxymbox{\hyperlink{class_console_app1_1_1_person_a03aa6b89164901feb13f78f92b355b56}{Person}}? other)
+\begin{DoxyCompactList}\small\item\em Sprawdza równość z innym obiektem klasy \doxylink{class_console_app1_1_1_person}{Person} na podstawie numeru PESEL. \end{DoxyCompactList}\item 
+override string {\bfseries To\+String} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_console_app1_1_1_customer_adc149cfa4919f4ef58da83de798e6754}\label{class_console_app1_1_1_customer_adc149cfa4919f4ef58da83de798e6754} 
+static Customer {\bfseries Load\+From\+JSON} (string file\+Name)
+\begin{DoxyCompactList}\small\item\em Wczytuje dane klienta z pliku JSON. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_console_app1_1_1_customer_aef5085c97f3846d382dce6d37ddcba14}\label{class_console_app1_1_1_customer_aef5085c97f3846d382dce6d37ddcba14} 
+\doxymbox{\hyperlink{class_console_app1_1_1_account}{Account}}? {\bfseries Personal\+Account}\hspace{0.3cm}{\ttfamily  \+[get, set]\+}
+\begin{DoxyCompactList}\small\item\em Przypisane konto osobiste klienta. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties inherited from \doxymbox{\hyperlink{class_console_app1_1_1_person}{Console\+App1.\+Person}}}
+\begin{DoxyCompactItemize}
+\item 
+string {\bfseries Full\+Name}\hspace{0.3cm}{\ttfamily  \+[get]\+}
+\begin{DoxyCompactList}\small\item\em Zwraca pełne imię i nazwisko. \end{DoxyCompactList}\item 
+string {\bfseries First\+Name}\hspace{0.3cm}{\ttfamily  \+[get, set]\+}
+\item 
+string {\bfseries Last\+Name}\hspace{0.3cm}{\ttfamily  \+[get, set]\+}
+\item 
+string \doxymbox{\hyperlink{class_console_app1_1_1_person_a8bfe6d22e03214006194a2e912abac6a}{Pesel}}\hspace{0.3cm}{\ttfamily  \+[get, set]\+}
+\begin{DoxyCompactList}\small\item\em Numer PESEL. Walidowany pod kątem posiadania dokładnie 11 cyfr. \end{DoxyCompactList}\item 
+string \doxymbox{\hyperlink{class_console_app1_1_1_person_a0457a160319171d05599a7da666b96db}{Tel\+Number}}\hspace{0.3cm}{\ttfamily  \+[get, set]\+}
+\begin{DoxyCompactList}\small\item\em Numer telefonu. Walidowany pod kątem formatu XXX-\/\+XXX-\/\+XXX. \end{DoxyCompactList}\item 
+Date\+Time {\bfseries Date\+Of\+Birth}\hspace{0.3cm}{\ttfamily  \+[get, set]\+}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \doxymbox{\hyperlink{class_console_app1_1_1_person}{Console\+App1.\+Person}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Person} ()
+\begin{DoxyCompactList}\small\item\em Konstruktor bezparametrowy wymagany przez serializację. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_console_app1_1_1_person_a852880b2f0a4ad8c54a0c23a4d002c1b}{Person}} (string first\+Name, string last\+Name, string pesel, string tel\+Number, Date\+Time date\+Of\+Birth)
+\begin{DoxyCompactList}\small\item\em Inicjalizuje nową instancję klasy \doxylink{class_console_app1_1_1_person}{Person}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Reprezentuje klienta banku, który może posiadać konto osobiste. 
+
+\label{doc-func-members}
+\Hypertarget{class_console_app1_1_1_customer_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_console_app1_1_1_customer_aaf674b118ea5519f0fed531fbdeb8203}\index{ConsoleApp1.Customer@{ConsoleApp1.Customer}!AssignAccount@{AssignAccount}}
+\index{AssignAccount@{AssignAccount}!ConsoleApp1.Customer@{ConsoleApp1.Customer}}
+\doxysubsubsection{\texorpdfstring{AssignAccount()}{AssignAccount()}}
+{\footnotesize\ttfamily \label{class_console_app1_1_1_customer_aaf674b118ea5519f0fed531fbdeb8203} 
+void Console\+App1.\+Customer.\+Assign\+Account (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_console_app1_1_1_account}{Account}}}]{account}{}\end{DoxyParamCaption})}
+
+
+
+Przypisuje konto do klienta. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em account} & Instancja konta.\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+Console\+App1/\+Customer.\+cs\end{DoxyCompactItemize}
