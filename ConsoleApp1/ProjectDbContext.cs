@@ -5,6 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/// <summary>
+/// Klasa kontekstu Entity Framework, konfigurująca relacje między tabelami bazy danych.
+/// </summary>
+
 namespace ConsoleApp1 {
     public class ProjectDbContext : DbContext {
         public ProjectDbContext() : base("name=ProjectDbContext") {
@@ -18,6 +22,18 @@ namespace ConsoleApp1 {
             modelBuilder.Entity<Customer>()
                 .HasOptional(c => c.PersonalAccount)
                 .WithRequired(a => a.Owner);
+
+            modelBuilder.Entity<Transaction>()
+                .HasOptional(t => t.Sender)       
+                .WithMany(a => a.SentTransactions)
+                .HasForeignKey(t => t.SendersPesel)
+                .WillCascadeOnDelete(false);   
+
+            modelBuilder.Entity<Transaction>()
+                .HasOptional(t => t.Recipient) 
+                .WithMany(a => a.ReceivedTransactions)
+                .HasForeignKey(t => t.RecipientsPesel)
+                .WillCascadeOnDelete(false);
         }
     }
 }
