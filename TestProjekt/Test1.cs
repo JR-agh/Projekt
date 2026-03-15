@@ -67,5 +67,20 @@ namespace TestProjekt {
             var exception = Assert.ThrowsException<TransactionTypeException>(() => t1 = new(testValue, TransactionType.Transfer, a1));
             Assert.AreEqual("Transfer jest błędnym typem operacji.", exception.Message);
         }
+        [TestMethod]
+        public void TransactionTest3() {
+            DateTime d1 = DateTime.Now;
+            Customer c1 = new("Elias", "Olson", "01234567890", "123-123-123", d1);
+            Customer c2 = new("Bella", "Swan", "02345678901", "234-234-234", d1);
+            Account a1 = new(c1);
+            Account a2 = new(c2);
+            a1.Balance = 20;
+            decimal testValue = 10;
+            Transaction t1 = new(testValue, TransactionType.Transfer, a1, a2);
+            a1.ProccessTransaction (t1);
+            a2.ProccessTransaction(t1);
+            Assert.AreEqual(a2.Balance, 10);
+            Assert.AreEqual(a1.Balance, 10);
+        }
     }
 }

@@ -1,0 +1,95 @@
+\doxysection{Console\+App1.\+Employee Class Reference}
+\hypertarget{class_console_app1_1_1_employee}{}\label{class_console_app1_1_1_employee}\index{ConsoleApp1.Employee@{ConsoleApp1.Employee}}
+
+
+Reprezentuje pracownika banku (doradcę), który zarządza kontami i monitoruje transakcje.  
+
+
+Inheritance diagram for Console\+App1.\+Employee:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_console_app1_1_1_employee}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_console_app1_1_1_employee_aba5d0fadc94a630b4f6368439698f390}\label{class_console_app1_1_1_employee_aba5d0fadc94a630b4f6368439698f390} 
+{\bfseries Employee} (string first\+Name, string last\+Name, string pesel, string tel\+Number, Date\+Time date\+Of\+Birth)
+\item 
+\Hypertarget{class_console_app1_1_1_employee_aa3b153eaa59a2c845cb73f1d24413f2d}\label{class_console_app1_1_1_employee_aa3b153eaa59a2c845cb73f1d24413f2d} 
+void {\bfseries Add\+Account} (\doxymbox{\hyperlink{class_console_app1_1_1_account}{Account}} account)
+\begin{DoxyCompactList}\small\item\em Dodaje konto do listy obsługiwanych przez pracownika. \end{DoxyCompactList}\item 
+\Hypertarget{class_console_app1_1_1_employee_aa1fd4a3260a4db4bba16fa56d003465a}\label{class_console_app1_1_1_employee_aa1fd4a3260a4db4bba16fa56d003465a} 
+void {\bfseries Approve} (\doxymbox{\hyperlink{class_console_app1_1_1_transaction}{Transaction}} transaction)
+\begin{DoxyCompactList}\small\item\em Zatwierdza transakcję i zdejmuje blokadę z konta nadawcy. \end{DoxyCompactList}\item 
+\Hypertarget{class_console_app1_1_1_employee_a792e60ba28e294457ca92def69fd420a}\label{class_console_app1_1_1_employee_a792e60ba28e294457ca92def69fd420a} 
+void {\bfseries Notify} (\doxymbox{\hyperlink{class_console_app1_1_1_transaction}{Transaction}} transaction)
+\begin{DoxyCompactList}\small\item\em Powiadamia pracownika o podejrzanej transakcji. \end{DoxyCompactList}\item 
+\Hypertarget{class_console_app1_1_1_employee_ae70867f6168366fe03fbc81c3c35c70a}\label{class_console_app1_1_1_employee_ae70867f6168366fe03fbc81c3c35c70a} 
+override bool {\bfseries Equals} (\doxymbox{\hyperlink{class_console_app1_1_1_person_a03aa6b89164901feb13f78f92b355b56}{Person}}? other)
+\item 
+\Hypertarget{class_console_app1_1_1_employee_a6c2ab93aac8eae08aa8e1d092dea1f0e}\label{class_console_app1_1_1_employee_a6c2ab93aac8eae08aa8e1d092dea1f0e} 
+void {\bfseries Save\+To\+JSON} ()
+\item 
+\Hypertarget{class_console_app1_1_1_employee_ac92c451e7ff94f5f3f8e593e3c349063}\label{class_console_app1_1_1_employee_ac92c451e7ff94f5f3f8e593e3c349063} 
+override string {\bfseries To\+String} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{class_console_app1_1_1_person}{Console\+App1.\+Person}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void {\bfseries Display\+Personal\+Info} ()
+\begin{DoxyCompactList}\small\item\em Wyświetla podstawowe informacje o osobie w konsoli. \end{DoxyCompactList}\item 
+bool {\bfseries Equals} (\doxymbox{\hyperlink{class_console_app1_1_1_person_a03aa6b89164901feb13f78f92b355b56}{Person}}? other)
+\begin{DoxyCompactList}\small\item\em Sprawdza równość z innym obiektem klasy \doxylink{class_console_app1_1_1_person}{Person} na podstawie numeru PESEL. \end{DoxyCompactList}\item 
+override string {\bfseries To\+String} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_console_app1_1_1_employee_af489fcbe768a4d9fd523b1e04018835f}\label{class_console_app1_1_1_employee_af489fcbe768a4d9fd523b1e04018835f} 
+static Employee {\bfseries Load\+From\+JSON} (string file\+Name)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_console_app1_1_1_employee_a34e69b4d543ab97f753e8af007b18a12}\label{class_console_app1_1_1_employee_a34e69b4d543ab97f753e8af007b18a12} 
+List$<$ \doxymbox{\hyperlink{class_console_app1_1_1_account}{Account}} $>$ {\bfseries Accounts}\hspace{0.3cm}{\ttfamily  \+[get, set]\+}
+\begin{DoxyCompactList}\small\item\em Lista kont przypisanych do doradcy. \end{DoxyCompactList}\item 
+\Hypertarget{class_console_app1_1_1_employee_ac5e9b7585e1d31f2be1f669093bfe45b}\label{class_console_app1_1_1_employee_ac5e9b7585e1d31f2be1f669093bfe45b} 
+List$<$ \doxymbox{\hyperlink{class_console_app1_1_1_transaction}{Transaction}} $>$ {\bfseries Sus\+Transactions}\hspace{0.3cm}{\ttfamily  \+[get, set]\+}
+\begin{DoxyCompactList}\small\item\em Lista podejrzanych transakcji wymagających weryfikacji. \end{DoxyCompactList}\item 
+\Hypertarget{class_console_app1_1_1_employee_adcf2ddeb028fc9a6f3f565f001530d60}\label{class_console_app1_1_1_employee_adcf2ddeb028fc9a6f3f565f001530d60} 
+List$<$ string $>$ {\bfseries Accounts\+Numbers}\hspace{0.3cm}{\ttfamily  \+[get, set]\+}
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties inherited from \doxymbox{\hyperlink{class_console_app1_1_1_person}{Console\+App1.\+Person}}}
+\begin{DoxyCompactItemize}
+\item 
+string {\bfseries Full\+Name}\hspace{0.3cm}{\ttfamily  \+[get]\+}
+\begin{DoxyCompactList}\small\item\em Zwraca pełne imię i nazwisko. \end{DoxyCompactList}\item 
+string {\bfseries First\+Name}\hspace{0.3cm}{\ttfamily  \+[get, set]\+}
+\item 
+string {\bfseries Last\+Name}\hspace{0.3cm}{\ttfamily  \+[get, set]\+}
+\item 
+string \doxymbox{\hyperlink{class_console_app1_1_1_person_a8bfe6d22e03214006194a2e912abac6a}{Pesel}}\hspace{0.3cm}{\ttfamily  \+[get, set]\+}
+\begin{DoxyCompactList}\small\item\em Numer PESEL. Walidowany pod kątem posiadania dokładnie 11 cyfr. \end{DoxyCompactList}\item 
+string \doxymbox{\hyperlink{class_console_app1_1_1_person_a0457a160319171d05599a7da666b96db}{Tel\+Number}}\hspace{0.3cm}{\ttfamily  \+[get, set]\+}
+\begin{DoxyCompactList}\small\item\em Numer telefonu. Walidowany pod kątem formatu XXX-\/\+XXX-\/\+XXX. \end{DoxyCompactList}\item 
+Date\+Time {\bfseries Date\+Of\+Birth}\hspace{0.3cm}{\ttfamily  \+[get, set]\+}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \doxymbox{\hyperlink{class_console_app1_1_1_person}{Console\+App1.\+Person}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Person} ()
+\begin{DoxyCompactList}\small\item\em Konstruktor bezparametrowy wymagany przez serializację. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_console_app1_1_1_person_a852880b2f0a4ad8c54a0c23a4d002c1b}{Person}} (string first\+Name, string last\+Name, string pesel, string tel\+Number, Date\+Time date\+Of\+Birth)
+\begin{DoxyCompactList}\small\item\em Inicjalizuje nową instancję klasy \doxylink{class_console_app1_1_1_person}{Person}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Reprezentuje pracownika banku (doradcę), który zarządza kontami i monitoruje transakcje. 
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+Console\+App1/\+Employee.\+cs\end{DoxyCompactItemize}

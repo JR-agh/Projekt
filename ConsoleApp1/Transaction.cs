@@ -8,6 +8,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 
 namespace ConsoleApp1 {
+    /// <summary>
+    /// Typy operacji bankowych.
+    /// </summary>
     public enum TransactionType {
         [System.ComponentModel.Description("Przelew")]
         Transfer,
@@ -16,15 +19,22 @@ namespace ConsoleApp1 {
         [System.ComponentModel.Description("Wypłata")]
         Withdrawal
     }
+    /// <summary>
+    /// Klasa reprezentująca pojedynczą operację finansową.
+    /// </summary>
     public class Transaction : ICloneable, IJSONSaveLoad<Transaction> { 
         Guid transactionID;
         decimal amount;
         Account? sender;
-        string sendersPesel;
-        string recipientsPesel;
+        string? sendersPesel;
+        string? recipientsPesel;
         Account? recipient;
         TransactionType type;
         public Transaction () { }
+        /// <summary>
+        /// Konstruktor dla depozytów i wypłat (transakcje jednoosobowe).
+        /// </summary>
+        /// <exception cref="TransactionTypeException">Gdy typ to Transfer (wymaga dwóch kont).</exception>
         public Transaction(decimal amount, TransactionType type, Account account1) {
             if(type == TransactionType.Transfer)
                 throw new TransactionTypeException(type);
@@ -39,6 +49,9 @@ namespace ConsoleApp1 {
             Amount = amount;
             TransactionID = Guid.NewGuid();
         }
+        /// <summary>
+        /// Konstruktor dla przelewów między dwoma kontami.
+        /// </summary>
         public Transaction(decimal amount, TransactionType type, Account account1, Account account2) {
             if (type != TransactionType.Transfer) {
                 throw new TransactionTypeException(type);
@@ -48,7 +61,11 @@ namespace ConsoleApp1 {
             SendersPesel = account1.OwnersPesel;
             Recipient = account2;
             RecipientsPesel = account2.OwnersPesel;
+            TransactionID = Guid.NewGuid();
         }
+        /// <summary>
+        /// Unikalny identyfikator transakcji.
+        /// </summary>
         [Key]
         public Guid TransactionID { get => transactionID; private set => transactionID = value; }
         public decimal Amount { get => amount; set => amount = value; }
@@ -72,15 +89,23 @@ namespace ConsoleApp1 {
 
         public string SendersPesel { get => sendersPesel; set => sendersPesel = value; }
         public string RecipientsPesel { get => recipientsPesel; set => recipientsPesel = value; }
-
+        /// <summary>
+        /// Zwraca sklonowany obiekt.
+        /// </summary>
         public object Clone() {
             return (Transaction)MemberwiseClone();
         }
+        /// <summary>
+        /// Wczytuje dane transakcji z pliku JSON.
+        /// </summary>
         public static Transaction LoadFromJSON(string fileName) {
             string jsonString = File.ReadAllText(fileName);
             Transaction transaction = JsonSerializer.Deserialize<Transaction>(jsonString);
             return transaction;
         }
+        /// <summary>
+        /// Zapisuje dane transakcji do pliku JSON.
+        /// </summary>
         public void SaveToJSON() {
             var options = new JsonSerializerOptions {
                 WriteIndented = true,
@@ -94,20 +119,13 @@ namespace ConsoleApp1 {
             string jsonString = JsonSerializer.Serialize(this, options);
             File.WriteAllText(fileName, jsonString);
         }
+
         public override string ToString() {
-            StringBuilder sb = new();
-            switch (Type) {
-                case TransactionType.Transfer:
-                    sb.Append($"Transakcja {TransactionID} o kwocie {Amount} z rachunku {sender.AccountNumber} na rachunek {recipient.AccountNumber}");
-                    break;
-                case TransactionType.Deposit:
-                    sb.Append($"Depozyt {TransactionID} o kwocie {Amount} na rachunek {recipient.AccountNumber}");
-                    break;
-                case TransactionType.Withdrawal:
-                    sb.Append($"Wypłata {TransactionID} o kwocie {Amount} z rachunku {sender.AccountNumber}");
-                    break;
-            }
-            return sb.ToString();
+            if (recipientsPesel == null)
+                return $"Wypłata {TransactionID} o kwocie {Amount} z rachunku {sender.AccountNumber}.";
+            if (sendersPesel == null)
+                return $"Depozyt {TransactionID} o kwocie {Amount} na rachunek {recipient.AccountNumber}.";
+            return $"Transakcja {TransactionID} o kwocie {Amount} z rachunku {sender.AccountNumber} na rachunek {recipient.AccountNumber}.";
         }
     }
 }

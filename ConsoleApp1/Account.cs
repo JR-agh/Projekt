@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace ConsoleApp1 {
+    /// <summary>
+    /// Reprezentuje konto bankowe z obsługą blokad, transakcji i doradcy.
+    /// </summary>
     public class Account : IComparable, IEquatable<Account>, IComparer<Account>, IJSONSaveLoad<Account> {
         decimal balance;
         Customer owner;
@@ -16,7 +20,8 @@ namespace ConsoleApp1 {
         Employee? advisor;
         bool isRestricted;
         string accountNumber;
-        List<Transaction> transactions;
+        List<Transaction> sentTransactions;
+        List<Transaction> receivedTransactions;
         Transaction? transactionOnHold;
 
         public Account() {
@@ -33,7 +38,8 @@ namespace ConsoleApp1 {
                 sb.Append(rnd.Next(1, 10));
             AccountNumber = sb.ToString();
             TransactionOnHold = null;
-            Transactions = new();
+            SentTransactions = new();
+            ReceivedTransactions = new();
             owner.AssignAccount(this);
             OwnersPesel = owner.Pesel;
         }
@@ -49,32 +55,47 @@ namespace ConsoleApp1 {
                 sb.Append(rnd.Next(1, 10));
             AccountNumber = sb.ToString();
             TransactionOnHold = null;
-            Transactions = new();
+            SentTransactions = new();
+            ReceivedTransactions = new();
         }
-
+        /// <summary>
+        /// Czy konto jest zablokowane (np. z powodu dużej kwoty transakcji).
+        /// </summary>
         public bool IsRestricted { get => isRestricted; set => isRestricted = value; }
 		public Employee Advisor { get => advisor; set => advisor = value; }
 		public Customer Owner { get => owner; set => owner = value; }
+        /// <summary>
+        /// Saldo konta.
+        /// </summary>  
         public decimal Balance { get => balance; set => balance = value; }
-
-		public List<Transaction> Transactions { get => transactions; set => transactions = value; }
-        
         public string AccountNumber { get => accountNumber; set => accountNumber = value; }
 		public Transaction? TransactionOnHold { get => transactionOnHold; set => transactionOnHold = value; }
+        /// <summary>
+        /// Przypisany numer PESEL właściciela (Klucz podstawowy dla DB).
+        /// </summary>
         [Key]
         public string OwnersPesel { get => ownersPesel; set => ownersPesel = value; }
-
+        public List<Transaction> SentTransactions { get => sentTransactions; set => sentTransactions = value; }
+        public List<Transaction> ReceivedTransactions { get => receivedTransactions; set => receivedTransactions = value; }
+        /// <summary>
+        /// Przypisuje doradcę do konta i aktualizuje listę kont doradcy.
+        /// </summary>
         public void AddAdvisor(Employee advisor) {
             Advisor = advisor;
             advisor.AddAccount(this);
         }
-
+        /// <summary>
+        /// Nakłada restrykcję na konto.
+        /// </summary>
         void SetRestriction(Transaction transaction) {
             IsRestricted = true;
             TransactionOnHold = transaction;
             Advisor.Notify(transaction);
         }
-
+        /// <summary>
+        /// Zdejmuje restrykcję z konta i finalizuje wstrzymaną transakcję.
+        /// </summary>
+        /// <exception cref="Exception">Rzucany, gdy nie ma transakcji do zatwierdzenia.</exception>
         public void RemoveRestricion() {
             IsRestricted = false;
             if (TransactionOnHold == null)
@@ -82,7 +103,9 @@ namespace ConsoleApp1 {
             this.BookTransaction(TransactionOnHold);
             TransactionOnHold = null;
         }
-
+        /// <summary>
+        /// Przeprowadza transakcję na koncie.
+        /// </summary>
 		public bool ProccessTransaction(Transaction transaction) {
             if (this.CheckTransaction(transaction)) {
                 this.BookTransaction(transaction);
@@ -91,6 +114,10 @@ namespace ConsoleApp1 {
             else
                 return false;
         }
+        /// <summary>
+        /// Sprawdza, czy transakcja wymaga weryfikacji (kwota > 10000).
+        /// </summary>
+        /// <returns>True, jeśli transakcja może być procesowana natychmiast.</returns>
         public bool CheckTransaction(Transaction transaction) {
             if (transaction.Amount > 10000) {
                 this.SetRestriction(transaction);
@@ -99,14 +126,19 @@ namespace ConsoleApp1 {
             else
                 return true;
         }
+        /// <summary>
+        /// Aktualizuje saldo konta na podstawie typu transakcji.
+        /// </summary>
 		public void BookTransaction(Transaction transaction) {
-            if (Transactions == null)
-                Transactions = new();
-            Transactions.Add(transaction);
-            if ((transaction.Type == TransactionType.Transfer && transaction.Sender == this) || transaction.Type == TransactionType.Withdrawal)
+            
+            if ((transaction.Type == TransactionType.Transfer && transaction.Sender == this) || transaction.Type == TransactionType.Withdrawal) {
                 Balance -= transaction.Amount;
-            else
+                //SentTransactions.Add(transaction);
+            }
+            else {
                 Balance += transaction.Amount;
+                //ReceivedTransactions.Add(transaction);
+            }
         }
         public int CompareTo(object? obj) {
             if (obj == null) return 1;
@@ -134,11 +166,17 @@ namespace ConsoleApp1 {
             if(x.balance == y.balance) return 0;
             return 1;
         }
+        /// <summary>
+        /// Wczytuje dane konta z pliku JSON.
+        /// </summary>
         public static Account LoadFromJSON(string fileName) {
 			string jsonString = File.ReadAllText(fileName);
 			Account account = JsonSerializer.Deserialize<Account>(jsonString);
 			return account;
 		}
+        /// <summary>
+        /// Zapisuje dane konta do pliku JSON.
+        /// </summary>
         public void SaveToJSON() {
 			var options = new JsonSerializerOptions {
 				WriteIndented = true,

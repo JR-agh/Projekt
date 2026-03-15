@@ -1,0 +1,39 @@
+\doxysection{Console\+App1 Namespace Reference}
+\hypertarget{namespace_console_app1}{}\label{namespace_console_app1}\index{ConsoleApp1@{ConsoleApp1}}
+
+
+Klasa kontekstu Entity Framework, konfigurująca relacje między tabelami bazy danych.  
+
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \doxymbox{\hyperlink{class_console_app1_1_1_account}{Account}}
+\begin{DoxyCompactList}\small\item\em Reprezentuje konto bankowe z obsługą blokad, transakcji i doradcy. \end{DoxyCompactList}\item 
+class \doxymbox{\hyperlink{class_console_app1_1_1_customer}{Customer}}
+\begin{DoxyCompactList}\small\item\em Reprezentuje klienta banku, który może posiadać konto osobiste. \end{DoxyCompactList}\item 
+class \doxymbox{\hyperlink{class_console_app1_1_1_employee}{Employee}}
+\begin{DoxyCompactList}\small\item\em Reprezentuje pracownika banku (doradcę), który zarządza kontami i monitoruje transakcje. \end{DoxyCompactList}\item 
+interface {\bfseries IJSONSave\+Load$<$ T $>$}
+\begin{DoxyCompactList}\small\item\em Interfejs definiujący kontrakt dla zapisu i odczytu obiektów w formacie JSON. \end{DoxyCompactList}\item 
+class \doxymbox{\hyperlink{class_console_app1_1_1_person}{Person}}
+\begin{DoxyCompactList}\small\item\em Klasa abstrakcyjna reprezentująca osobę w systemie. Zawiera podstawowe dane osobowe oraz walidację PESEL i numeru telefonu. \end{DoxyCompactList}\item 
+class \doxymbox{\hyperlink{class_console_app1_1_1_project_db_context}{Project\+Db\+Context}}
+\item 
+class \doxymbox{\hyperlink{class_console_app1_1_1_transaction}{Transaction}}
+\begin{DoxyCompactList}\small\item\em Klasa reprezentująca pojedynczą operację finansową. \end{DoxyCompactList}\item 
+class \doxymbox{\hyperlink{class_console_app1_1_1_transaction_type_exception}{Transaction\+Type\+Exception}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{namespace_console_app1_a01e9654cb192f0472479a1fa3c8f8be9}\label{namespace_console_app1_a01e9654cb192f0472479a1fa3c8f8be9} 
+enum \doxymbox{\hyperlink{namespace_console_app1_a01e9654cb192f0472479a1fa3c8f8be9}{Transaction\+Type}} \{ {\bfseries Transfer}
+, {\bfseries Deposit}
+, {\bfseries Withdrawal}
+ \}
+\begin{DoxyCompactList}\small\item\em Typy operacji bankowych. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Klasa kontekstu Entity Framework, konfigurująca relacje między tabelami bazy danych. 
